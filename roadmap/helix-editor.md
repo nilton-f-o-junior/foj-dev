@@ -20,8 +20,6 @@ d#####x,   ,v||
 
 Helix is a modal code editor written in Rust, inspired by Kakoune and Neovim. It stands out for its "selection-first" approach and exceptional speed. A key advantage is that it provides essential IDE features, like LSP (Language Server Protocol) and DAP (Debug Adapter Protocol), built-in, eliminating the need for a vast collection of plugins. This makes it a powerful and efficient alternative for those seeking a modern editing experience without the complexity of managing countless plugins.
 
-## Basic
-
 `mod`
 
 ```md

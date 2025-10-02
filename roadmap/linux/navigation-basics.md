@@ -10,10 +10,21 @@
 /home/username/Documents
 ```
 
-`ls (list)`
+`ls, ls -a, ls -la (list)`
 
 ```md
-Document.txt  Downloads Images
+ls
+ Document.txt  Downloads Images
+
+la -la
+ drwx------ 1 user user  280 Aug 16 06:31 .
+ drwxr-xr-x 1 root root    8 Jul 28 00:00 ..
+```
+
+`tab: autocomplete`
+  
+```md
+tab + <name>
 ```
 
 `cd (change directory)`
@@ -28,62 +39,78 @@ cd Downloads
 more new_file.txt
 ```
 
-`head (output the beginning of files)`
+`head (output the beginning of files) and tail (output the last part of files)`
 
 ```md
 head new_file.txt
 
-line 1
-...
-line 10
-```
+ line 1
+ ...
+ line 10
 
-`tail (output the last part of files)`
-
-```md
 tail new_file.txt
 
-line 91
-...
-line 100
+ line 91
+ ...
+ line 100
+```
+
+`clear or ctrl + l`
+
+```md
+clear
+ctrl + l 
 ```
 
 ## Creating Files & Deleting Files
 
-`touch (create file/update timestamp)`
+`touch or >`
 
 ```md
-touch new_file.txt
-```
+touch <name>
+touch arq.txt
+    
+> <name>
+> arq.txt
 
-`> (create file/update timestamp)`
+// multiples files
+touch <name> <name2> <name3>
 
-```md
-> new_file.txt
+// ocult files
+touch .<name>   
 ```
 
 `mkdir (make directory)`
 
 ```md
-mkdir NewDirectory
+mdkir <name>
+
+// name + space
+mkdir <name>\ <name>
+
+// multiples directories
+mkdir -p dir/dir/dir1/dir2  
+
+// ocult directories
+mdkir .<name>
 ```
 
 ## Moving Files
 
-`mv (move)`
+`mv <name> <path> (move)`
 
 ```md
 mv old_name.txt new_name.txt      // rename
 mv report.pdf /home/user/Archive/ // move
 ```
 
-`cp (copy)`
+`cp <nome> path (copy)`
 
 ```md
 cp file.txt /tmp/backup/file.txt
 ```
 
-`rm (remove)`
+`rm <name> or rm -r <name> or rm -rf <name> (remove)`
 
 ```md
 rm file_to_delete.txt

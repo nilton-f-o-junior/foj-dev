@@ -1,97 +1,93 @@
 # Linux
 
-## Introduction
-
 ## Navigation Basics
 
 `pwd (print working directory)`
 
-```md
+```bash
 /home/username/Documents
 ```
 
 `ls, ls -a, ls -la (list)`
 
-```md
+```bash
 ls
- Document.txt  Downloads Images
+# Document.txt  Downloads Images
 
 la -la
- drwx------ 1 user user  280 Aug 16 06:31 .
- drwxr-xr-x 1 root root    8 Jul 28 00:00 ..
+# drwx------ 1 user user  280 Aug 16 06:31 .
+# drwxr-xr-x 1 root root    8 Jul 28 00:00 ..
 ```
 
 `tab: autocomplete`
   
-```md
+```bash
 tab + <name>
 ```
 
 `cd (change directory)`
 
-```md
+```bash
 cd Downloads
 ```
 
 `cat, more, less (display output)`
 
-```md
+```bash
 more new_file.txt
 ```
 
 `head (output the beginning of files) and tail (output the last part of files)`
 
-```md
+```bash
 head new_file.txt
-
- line 1
- ...
- line 10
+# line 1
+# ...
+# line 10
 
 tail new_file.txt
-
- line 91
- ...
- line 100
+# line 91
+# ...
+# line 100
 ```
 
 `clear or ctrl + l`
 
-```md
+```bash
 clear
+
+# or
+
 ctrl + l 
 ```
 
 ## Creating Files & Deleting Files
 
-`touch or >`
+`> and touch`
 
-```md
-touch <name>
-touch arq.txt
-    
+```bash 
 > <name>
 > arq.txt
 
-// multiples files
+# multiples files
 touch <name> <name2> <name3>
 
-// ocult files
+# ocult files
 touch .<name>   
 ```
 
 `mkdir (make directory)`
 
-```md
+```bash
 mdkir <name>
 
-// name + space
+# name + space
 mkdir <name>\ <name>
 
-// multiples directories
+# multiples directories
 mkdir -p dir/dir/dir1/dir2  
 
-// ocult directories
+# ocult directories
 mdkir .<name>
 ```
 
@@ -99,20 +95,23 @@ mdkir .<name>
 
 `mv <name> <path> (move)`
 
-```md
-mv old_name.txt new_name.txt      // rename
-mv report.pdf /home/user/Archive/ // move
+```bash
+# rename
+mv old_name.txt new_name.txt
+
+# move
+mv report.pdf /home/user/Archive/
 ```
 
-`cp <nome> path (copy)`
+`cp <nome> <path> (copy)`
 
-```md
+```bash
 cp file.txt /tmp/backup/file.txt
 ```
 
 `rm <name> or rm -r <name> or rm -rf <name> (remove)`
 
-```md
+```bash
 rm file_to_delete.txt
 ```
 

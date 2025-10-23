@@ -3,6 +3,7 @@
 `stdin`
 
 ```bash
+# in
 read name
 echo "Hello, word! $name"
 
@@ -14,6 +15,7 @@ sort < list.txt
 `stdout`
 
 ```bash
+# out
 echo "Hello, word!"
 
 # or
@@ -24,6 +26,7 @@ ls -l > file.txt
 `stderr`
 
 ```bash
+# error
 command_invalid 2> err.txt
 ```
 
@@ -61,6 +64,7 @@ paste -d',' name.txt age.txt
 ```
 
 `sort`
+
 ```bash
 # name.txt
 # Roberto
@@ -88,6 +92,7 @@ sort -t':' -k2 -n user.txt
 ```
 
 `tr`
+
 ```bash
 # name.txt
 # roberto
@@ -109,6 +114,7 @@ tr '-' '\n' < text.txt
 ```
 
 `head`
+
 ```bash
 # text.txt
 # Line 1
@@ -131,6 +137,7 @@ head -2 text.txt text1.txt text2.txt
 ```
 
 `tail`
+
 ```bash
 # text.txt
 # Line 1
@@ -152,6 +159,7 @@ tail -n +2 text.txt
 ```
 
 `join`
+
 ```bash
 # user.txt  # id.txt
 # 1 Roberto   # 1 60
@@ -167,6 +175,7 @@ join -o 1.2,2.2 user.txt id.txt
 ```
 
 `split`
+
 ```bash
 # text.txt
 # line 1
@@ -184,6 +193,7 @@ split -l 20 -d text.txt part_
 ```
 
 `|`
+
 ```bash
 # text.txt
 # line 9
@@ -200,43 +210,99 @@ cat lista.txt | sort | head -3
 ```
 
 `tee`
-```bash
 
+```bash
+# text.txt
+# admin: alice
+# user: rodolfo
+
+more text.txt | list.txt list1.txt list2.txt
+
+# output
+# admin: alice
+# user: rodolfo
+
+# list.txt, list1.txt list2.txt
+# admin: alice
+# user: rodolfo
 ```
 
-`n`
-```bash
+`nl`
 
+```bash
+# text.txt
+# Rodolfo
+# Alice
+# Aslan
+
+nl text.txt
+#  1	Rodolfo
+#  2  Alice
+#  3  Aslan
 ```
 
 `wc`
-```bash
 
+```bash
+# text.txt
+# Admin - user
+# User - Rodolfo
+# User - Alice
+
+wc text.txt
+3 9 41 text.txt
+
+# 3 = lines
+# 9 = words
+# size (bytes)
 ```
 
 `expand`
-```bash
 
+```bash
+# convert tabs in spaces
+ admin - user
+ user - rodolfo
+ user - alice
+
+expand text.txt
+
+#  admin - user
+#  user - rodolfo
+#  user - alice
 ```
 
 `unexpand`
-```bash
 
+```bash
+# convert spaces in tabs
+#  admin - user
+#  user - rodolfo
+#  user - alice
+
+unexpand text.txt
+
+# admin - user
+# user - rodolfo
+# user - alice
 ```
 
 `uniq`
+
 ```bash
+# remove repeated lines
+# text.txt
+# 1
+# 1
+# 1
+# 2
+# 3
+# 4
 
+uniq text.txt
+
+# 1
+# 2
+# 3
+# 4
 ```
-
-`grep`
-```bash
-
-```
-
-`awk`
-```bash
-
-```
-
-

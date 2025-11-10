@@ -127,3 +127,5 @@ O resultado e:
 
 
 ```
+
+Seria interessante explicar tambem como funciona Scope e Lifetima, depois explicar tambem Shadowing em rust. Pode ser um complemento legal para garantir que esta tudo aqui

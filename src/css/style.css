@@ -5,6 +5,7 @@
 */
 
 :root {
+    --font-mono: 'JetBrains Mono', monospace;
     --bg-color-pri: #11111B;
     --bg-color-sec: #181825;
     --text-color-pri: #fff;
@@ -16,7 +17,6 @@
     --tag-color-green: #A6E3A1;
     --tag-color-red: #EBA0AC;
     --accent-color: #f5e0dc;
-    --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {

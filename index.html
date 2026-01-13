@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Blog pessoal de Nilton F. O. Junior - Desenvolvedor & Designer">
         <meta property="og:title" content="Nilton F. O. Junior | Blog">
@@ -72,42 +73,12 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Nilton F. O. Júnior. Desenvolvido com JetBrains Mono.</p>
+        <p>&copy; 2026 Nilton F. O. Júnior.</p>
     </footer>
 
-    <script>
-        // Lógica de Scroll Suave
-        document.getElementById('scrollBtn').addEventListener('click', () => {
-            document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Lógica de Filtragem
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const posts = document.querySelectorAll('.post-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active de todos
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Adiciona ao clicado
-                btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                posts.forEach(post => {
-                    if (filterValue === 'all' || post.getAttribute('data-category') === filterValue) {
-                        post.classList.remove('hidden');
-                    } else {
-                        post.classList.add('hidden');
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-         
+    <script src="js/script.js" defer></script>
+</body>         
 </html>
-
 
 <!--
 
@@ -120,4 +91,3 @@
 Tag: Básico, Intermediário e Avançado
 
 -->
-

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+  <title>Nilton F. O. Júnior | Artigos</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/template.css">
+</head>
+
+<body>
+
+<article class="container">
+
+  <header class="article-header">
+    <p class="article-date">01 Janeiro | 2026</p>
+    <h1>Título do Artigo</h1>
+    <p class="article-summary">Este é um pequeno resumo do texto em itálico para introduzir o leitor ao assunto abordado.</p>
+  </header>
+
+  <section class="article-content">
+
+    <p>Este é o início do desenvolvimento textual. Todo o conteúdo está alinhado à esquerda para facilitar a leitura e utiliza a unidade relativa rem.</p>
+
+    <figure class="article-image">
+      <img src="https://via.placeholder.com/800x400/181825/89B4FA?text=Imagem+de+Exemplo" alt="Descrição da imagem">
+      <figcaption>Fonte: Placeholder adaptado ao tema</figcaption>
+    </figure>
+
+    <p>Abaixo, um exemplo de bloco de código com a funcionalidade de copiar:</p>
+  
+    <div class="code-container">
+      <div class="code-header">
+        <span>Python</span>
+        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      </div>
+
+      <pre><code><span class="keyword">def</span> <span class="function">soma</span>(a, b):
+    <span class="keyword">return</span> a + b
+
+<span class="comment"># Exemplo de uso</span>
+<span class="function">print</span>(<span class="string">"Olá, mundo!"</span>)
+resultado = <span class="function">soma</span>(5, 3)
+<span class="function">print</span>(f<span class="string">"Resultado: {resultado}"</span>)</code></pre>
+
+    </div>
+
+    <p>O template agora utiliza as variáveis CSS definidas, possui um tema dark consistente, melhor responsividade e transições suaves nos elementos interativos.</p>
+
+  </section>
+</article>
+
+<script>
+  function copyCode(button) {
+    const container = button.closest('.code-container');
+    const code = container.querySelector('code').innerText;
+
+    navigator.clipboard.writeText(code).then(() => {
+      button.innerText = "✓ Copiado";
+      button.classList.add('copied');
+
+      setTimeout(() => {
+        button.innerText = "Copiar";
+        button.classList.remove('copied');
+      }, 2000);
+    }).catch(err => {
+      console.error('Erro ao copiar:', err);
+      button.innerText = "Erro";
+      setTimeout(() => {
+        button.innerText = "Copiar";
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

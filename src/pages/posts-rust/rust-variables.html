@@ -16,37 +16,85 @@
 
   <header class="article-header">
     <p class="article-date">31 Janeiro | 2026</p>
-    <h1>Variáveis</h1> 
-    <p class="article-summary">Variáveis são espaços nomeados na memória que podem armazenar um valor. Você entede o que isso significa?</p>
+    <h1>Variáveis</h1>
+    <p class="article-summary">Variáveis são espaços nomeados na memória que podem armazenar um valor. Você entende como o computador organiza essa informação?</p>
   </header>
 
   <section class="article-content">
 
-    <figure class="article-image">
-      <img src="https://via.placeholder.com/800x400/181825/89B4FA?text=Imagem+de+Exemplo" alt="Descrição da imagem">
-      <figcaption>Fonte: Placeholder adaptado ao tema</figcaption>
-    </figure>
+    <p>Programar nada mais é do que dar instruções para que um computador execute tarefas. Para que isso aconteça, a máquina utiliza dois recursos fundamentais que trabalham juntos: a <strong>memória</strong> e o <strong>processamento</strong>.</p>
 
-    <p>Abaixo, um exemplo de bloco de código com a funcionalidade de copiar:</p>
+    <p><strong>- Memória:</strong> funciona como um "caixa" onde armazenamos informações, sejam elas números,
+        ↪ textos ou imagens;</p>
+
+    <p><strong>- Processamento:</strong> é o "cérebro" que realiza cálculos e manipula os dados guardados na memória para gerar um resultado.</p>
+
+    <h2>O Sistema Binário</h2>
+    
+    <p>Como o computador é uma máquina eletrônica, ele se comunica através de sinais elétricos: a presença ou a ausência de corrente. Para traduzir isso para o mundo lógico, utilizamos o <strong>sistema binário</strong>, composto por apenas dois dígitos: 0 (desligado) e 1 (ligado).</p>
   
+    <p>Cada um desses dígitos é chamado de <strong>bit</strong> (a menor unidade de informação). Combinando esses bits, o computador consegue representar números maiores e instruções complexas:</p>
+
     <div class="code-container">
       <div class="code-header">
-        <span>Python</span>
+        <span>Binário</span>
         <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
       </div>
-
-      <pre><code><span class="keyword">def</span> <span class="function">soma</span>(a, b):
-    <span class="keyword">return</span> a + b
-
-<span class="comment"># Exemplo de uso</span>
-<span class="function">print</span>(<span class="string">"Olá, mundo!"</span>)
-resultado = <span class="function">soma</span>(5, 3)
-<span class="function">print</span>(f<span class="string">"Resultado: {resultado}"</span>)</code></pre>
-
+      <pre><code>Número 0: 0
+Número 1: 1
+Número 2: 10
+Número 3: 11</code></pre>
     </div>
 
-    <p>O template agora utiliza as variáveis CSS definidas, possui um tema dark consistente, melhor responsividade e transições suaves nos elementos interativos.</p>
+    <h2>De Bits a Bytes</h2>
 
+    <p>A unidade básica é o Bit, mas para representar informações mais complexas, combinamos 8 bits para formar um <strong>Byte</strong>.</p>
+    
+    <p>Imagine um Byte como uma sequência de 8 interruptores. Se todos estiverem desligados (00000000), temos o número 0. Se apenas o último estiver ligado (00000001), temos o número 1. A maior combinação possível é quando todos os 8 bits estão ligados (11111111), o que representa o número 255.</p>
+  
+    <h2>O Conceito de Variáveis</h2>
+
+    <p>É aqui que entram as <strong>variáveis</strong>. De forma simples, uma variável é um espaço reservado na memória para armazenar esses valores. Como o próprio nome diz, o conteúdo desse espaço pode "variar" ao longo do tempo, mas o "rótulo" que damos a ele permanece o mesmo.</p>
+
+    <h3>Analogia do Armário</h3>
+
+    <p>Para entender como isso funciona na prática, imagine a memória do computador como um grande armário cheio de gavetas. Inicialmente, essas gavetas estão vazias e não possuem nenhuma etiqueta.</p>
+
+    <figure class="article-image">
+      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-01.png" alt="Armário com gavetas vazias">
+      <figcaption>Representação da memória inicial vazia.</figcaption>
+    </figure>
+
+    <p>Se você decidir guardar três informações diferentes, sua tendência natural seria colocá-las em gavetas sequenciais (uma ao lado da outra) para manter a organização.</p>
+
+    <figure class="article-image">
+      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-02.png" alt="Dados em gavetas sequenciais">
+      <figcaption>Organização ideal: dados em endereços vizinhos.</figcaption>
+    </figure>
+
+    <p>No entanto, o computador nem sempre consegue fazer isso. Como muitos programas rodam ao mesmo tempo, as gavetas vizinhas podem já estar ocupadas. Por isso, os dados acabam ficando espalhados em lugares distintos do "armário".</p>
+
+    <figure class="article-image">
+      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-03.png" alt="Dados espalhados no armário">
+      <figcaption>Memória fragmentada: dados ocupando espaços disponíveis aleatórios.</figcaption>
+    </figure>
+
+    <p>Agora, imagine que em vez de 16 gavetas, tivéssemos 45 ou até milhões delas. Ficaria impossível lembrar de cabeça onde cada dado foi guardado, certo?</p>
+
+    <figure class="article-image">
+      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-04.png" alt="Grande quantidade de gavetas">
+      <figcaption>O desafio de gerenciar grandes volumes de dados.</figcaption>
+    </figure>
+
+    <p>Para resolver esse caos, a memória utiliza <strong>endereços</strong>. Cada gaveta possui um código único e exclusivo. Assim, o computador não apenas guarda a informação, mas registra exatamente em qual "endereço" ela foi colocada para poder buscá-la depois.</p>
+
+    <figure class="article-image">
+      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-05.png" alt="Endereçamento de memória">
+      <figcaption>Endereços únicos identificando cada posição na memória.</figcaption>
+    </figure>
+
+    <p>Um detalhe crucial: na memória, cada gaveta suporta exatamente <strong>1 Byte</strong>. Se a informação que você quer guardar for pequena, ela ocupa uma gaveta. Mas, se a informação for grande (como uma foto ou um texto longo), o sistema a divide em pedaços e ocupa duas, três ou quantas gavetas forem necessárias para armazenar o dado completo.</p>
+       
   </section>
 </article>
 

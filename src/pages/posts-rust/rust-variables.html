@@ -24,14 +24,14 @@
 
     <p>Programar nada mais é do que dar instruções para que um computador execute tarefas. Para que isso aconteça, a máquina utiliza dois recursos fundamentais que trabalham juntos: a <strong>memória</strong> e o <strong>processamento</strong>.</p>
 
-    <p><strong>- Memória:</strong> funciona como um "caixa" onde armazenamos informações, sejam elas números,
-        ↪ textos ou imagens;</p>
-
+    <p><strong>- Memória:</strong> funciona como um "caveta" onde armazenamos informações, sejam elas números, textos ou imagens;</p>
     <p><strong>- Processamento:</strong> é o "cérebro" que realiza cálculos e manipula os dados guardados na memória para gerar um resultado.</p>
 
     <h2>O Sistema Binário</h2>
     
-    <p>Como o computador é uma máquina eletrônica, ele se comunica através de sinais elétricos: a presença ou a ausência de corrente. Para traduzir isso para o mundo lógico, utilizamos o <strong>sistema binário</strong>, composto por apenas dois dígitos: 0 (desligado) e 1 (ligado).</p>
+    <p>Como o computador é uma máquina eletrônica, ele se comunica através de sinais elétricos: a presença ou a ausência de corrente.</p>
+
+    <p>Para traduzir isso para o mundo lógico, utilizamos o <strong>sistema binário</strong>, composto por apenas dois dígitos: 0 (desligado) e 1 (ligado).</p>
   
     <p>Cada um desses dígitos é chamado de <strong>bit</strong> (a menor unidade de informação). Combinando esses bits, o computador consegue representar números maiores e instruções complexas:</p>
 
@@ -54,9 +54,9 @@ Número 3: 11</code></pre>
   
     <h2>O Conceito de Variáveis</h2>
 
-    <p>É aqui que entram as <strong>variáveis</strong>. De forma simples, uma variável é um espaço reservado na memória para armazenar esses valores. Como o próprio nome diz, o conteúdo desse espaço pode "variar" ao longo do tempo, mas o "rótulo" que damos a ele permanece o mesmo.</p>
+    <p>De forma simples, uma variável é um espaço reservado na memória para armazenar esses valores. Como o próprio nome diz, o conteúdo desse espaço pode "variar" ao longo do tempo, mas o "rótulo" que damos a ele permanece o mesmo.</p>
 
-    <h3>Analogia do Armário</h3>
+    <h2>Analogia do Armário</h2>
 
     <p>Para entender como isso funciona na prática, imagine a memória do computador como um grande armário cheio de gavetas. Inicialmente, essas gavetas estão vazias e não possuem nenhuma etiqueta.</p>
 
@@ -86,7 +86,7 @@ Número 3: 11</code></pre>
       <figcaption>O desafio de gerenciar grandes volumes de dados.</figcaption>
     </figure>
 
-    <p>Para resolver esse caos, a memória utiliza <strong>endereços</strong>. Cada gaveta possui um código único e exclusivo. Assim, o computador não apenas guarda a informação, mas registra exatamente em qual "endereço" ela foi colocada para poder buscá-la depois.</p>
+    <p>Para resolver esse caos, a memória utiliza <strong>endereços</strong>. Cada gaveta possui um código único e exclusivo. Assim, o computador não apenas guarda a informação, mas registra exatamente em qual "<strong>endereço</strong>" ela foi colocada para poder buscá-la depois.</p>
 
     <figure class="article-image">
       <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-05.png" alt="Endereçamento de memória">
@@ -94,6 +94,28 @@ Número 3: 11</code></pre>
     </figure>
 
     <p>Um detalhe crucial: na memória, cada gaveta suporta exatamente <strong>1 Byte</strong>. Se a informação que você quer guardar for pequena, ela ocupa uma gaveta. Mas, se a informação for grande (como uma foto ou um texto longo), o sistema a divide em pedaços e ocupa duas, três ou quantas gavetas forem necessárias para armazenar o dado completo.</p>
+
+    <div class="code-container">
+        <pre><code>1 Byte   = [00000000]
+Endereço = 0xCB20
+[00000000] + 0xCB20 = Dado</code></pre>
+    </div>
+
+    <h2>Tipos de Dados</h2>
+    
+    <p>Essa analogia do armário ajuda a entender como a memória organiza a informação. Na prática, o resultado desse armazenamento é o que chamamos de dado. Para facilitar a manipulação desses dados, nós os classificamos em três tipos principais:</p>
+
+    <p><strong>- Escalares (ou Primitivos):</strong>um valor único e simples, como int (números inteiros), float (números decimais), bool (verdadeiro ou falso) e char (um único caractere);</p>
+
+    <p><strong>- Compostos (ou Estruturados):</strong>coleções que agrupam vários dados em uma única estrutura, como Arrays (listas) e Tuplas;</p>
+
+    <p><strong>- Referência:</strong>diferente dos outros, este não guarda o valor final, mas sim o endereço de onde o dado está na memória. É o que conhecemos como 'Ponteiro'.</p>
+
+    <p>Caso queira continuar estudando e entender como a memória lida com esse dado, <a href="LINK_AQUI">segue o link</a>. Bons estudos!</p>
+
+    <blockquote class="quote">
+      <p>"<em>A beleza que vive no ato de compartilhar algo com o outro.</em>" — Monja Coen</p>      
+    </blockquote>
        
   </section>
 </article>

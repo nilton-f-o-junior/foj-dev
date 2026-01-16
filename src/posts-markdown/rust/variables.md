@@ -48,98 +48,12 @@ Um detalhe crucial: na memória, cada gaveta suporta exatamente 1 Byte. Se a inf
 Endereço = 0xCB20
 [00000000] + 0xCB20 = Dado
 
-Exemplo:
-
-[00000001] 0xCB20
-[00000010] 0xCB21
-[00000011] 0xCB22
-[00000101] 0xCB23
-[00000111] 0xCB24
-
-Segmentos da Memória
-
-- Code - Código do programa
-- Static - Dados estáticos
-- Free - Espaço livre
-- Heap - Todos os dados cujo tamanho não sabemos previamente (Strings, Vec)
-- Stack - Todos os dados cujo tamanho pode ser definido em tempo de compilação (int, float, bool, tuplas)
-
-Tipos de Dados
+O texto simplica bem o conceito inicial de como a memória funciona e de como ela armazena e organiza essa informação, porém o resultado desse processo é um dado e temos 3 tipos de dados, sendo eles:
 
 Escalares - int, float, bool, char
 Compostos - Array, Tuplas
 Referência - Guarda a posição de um dado ("Ponteiro")
 
-###
+Caso queria continuar estudando e entender como a memória lida com esse dado, segue o link. Bons estudos!
 
-Escalares
-
-A memoria sabe o tamanho que ocupa um dado escalar, logo reservando um espaco definido para aquele dado
-
-Exemplo:
-
-Bool so possui 2 valores: true ou false!
-Char: usa a tabela ASCII para saber quais os valores podem ser armazenados
-Int: com um unico comando e possivel saber o valor minimo e maximo possivel: ![Precede ordination]()
-
-Segue o codigo:
-
-`min and max`
-
-```rust
-println!("u8: Min = {} | Max = {}", std::u8::MIN, std::u8::MAX);
-```
-
-Usando escalares na pratica
-
-```rust
-let valor_a: u8 = 10;
-let valor_b = valor_a;
-println!(A = {}\n B = {}, valor_a, valor_b);
-```
-
-Nesse caso o rust faz uma copia da variavel `valor_a` e armazena na variavel `valor_b`
-
-Isso evita erros:
-
-Double Free: tentando liberar a mesma memória duas vezes
-Use After Free: Acesso a memória inválida
-Memory Leaks: Perdemos a referência original
-
-Em rust a variavel `valor_a` pode ser usada e modificada e nao ira interferir na variavel `valor_b`
-
-Porem, quando lidamos com String e Vec, estamos lidando com tipos compostos.
-
-Compostos
-
-O valor e armazedao na memoria heap, pois nao temos como saber quanto de memoria deve ser alocado pois podemos receber apenas 1 caractere ou podemoos receber 1 livro.
-
-Quando fazemos a mesma coisa usando uma String ou um Vector
-
-```rust
-let valor_a: String = String::from("Valor A");
-let valor_b = valor_a;
-println!(A = {}\n B = {}, valor_a, valor_b);
-```
-O resultado e um error!
-
-```md
-
-
-```
-
-Isso se dar pelo fato que o rust para impedir que isso aconteca, ele move oo valor de lugar, ele nao faz uma copia, ele move o `valor_a` para a varivel `valor_b`
-
-```rust
-let valor_a: String = String::from("Valor A");
-let valor_b = valor_a;
-println!(B = {},  valor_b);
-```
-O resultado e:
-
-```md
-
-
-```
-
-Seria interessante explicar tambem como funciona Scope e Lifetima, depois explicar tambem Shadowing em rust. Pode ser um complemento legal para garantir que esta tudo aqui
+"A beleza que vive no ato de compartilhar algo com o outro." Monja Coen

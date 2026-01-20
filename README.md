@@ -1,3 +1,3 @@
 <p align="center">
-	<img src="img/progress-logo.png">
+	<img src="img/git-blog.png">
 </p>

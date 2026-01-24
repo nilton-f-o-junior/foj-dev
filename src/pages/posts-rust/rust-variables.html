@@ -62,35 +62,50 @@ Número 3: 11</code></pre>
 
     <figure class="article-image">
       <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-01.png" alt="Armário com gavetas vazias">
-      <figcaption>Representação da memória inicial vazia.</figcaption>
+      <figcaption>Representação da memória inicial vazia.
+        <br>
+        <small><strong>Fonte:</strong> Próprio Autor</small>
+      </figcaption>
     </figure>
 
     <p>Se você decidir guardar três informações diferentes, sua tendência natural seria colocá-las em gavetas sequenciais (uma ao lado da outra) para manter a organização.</p>
 
     <figure class="article-image">
       <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-02.png" alt="Dados em gavetas sequenciais">
-      <figcaption>Organização ideal: dados em endereços vizinhos.</figcaption>
+      <figcaption>Organização ideal: dados em endereços vizinhos.
+        <br>      
+        <small><strong>Fonte:</strong> Próprio Autor</small>
+      </figcaption>
     </figure>
 
     <p>No entanto, o computador nem sempre consegue fazer isso. Como muitos programas rodam ao mesmo tempo, as gavetas vizinhas podem já estar ocupadas. Por isso, os dados acabam ficando espalhados em lugares distintos do "armário".</p>
 
     <figure class="article-image">
       <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-03.png" alt="Dados espalhados no armário">
-      <figcaption>Memória fragmentada: dados ocupando espaços disponíveis aleatórios.</figcaption>
+      <figcaption>Memória fragmentada: dados ocupando espaços disponíveis aleatórios.
+        <br>
+        <small><strong>Fonte:</strong> Próprio Autor</small>
+      </figcaption>
     </figure>
 
     <p>Agora, imagine que em vez de 16 gavetas, tivéssemos 45 ou até milhões delas. Ficaria impossível lembrar de cabeça onde cada dado foi guardado, certo?</p>
 
     <figure class="article-image">
       <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-04.png" alt="Grande quantidade de gavetas">
-      <figcaption>O desafio de gerenciar grandes volumes de dados.</figcaption>
+      <figcaption>O desafio de gerenciar grandes volumes de dados.
+        <br>
+        <small><strong>Fonte:</strong> Próprio Autor</small>
+      </figcaption>
     </figure>
 
     <p>Para resolver esse caos, a memória utiliza <strong>endereços</strong>. Cada gaveta possui um código único e exclusivo. Assim, o computador não apenas guarda a informação, mas registra exatamente em qual "<strong>endereço</strong>" ela foi colocada para poder buscá-la depois.</p>
 
     <figure class="article-image">
       <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-05.png" alt="Endereçamento de memória">
-      <figcaption>Endereços únicos identificando cada posição na memória.</figcaption>
+      <figcaption>Endereços únicos identificando cada posição na memória.
+        <br>
+        <small><strong>Fonte:</strong> Próprio Autor</small>
+      </figcaption>
     </figure>
 
     <p>Um detalhe crucial: na memória, cada gaveta suporta exatamente <strong>1 Byte</strong>. Se a informação que você quer guardar for pequena, ela ocupa uma gaveta. Mas, se a informação for grande (como uma foto ou um texto longo), o sistema a divide em pedaços e ocupa duas, três ou quantas gavetas forem necessárias para armazenar o dado completo.</p>

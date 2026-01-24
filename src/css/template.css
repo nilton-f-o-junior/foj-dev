@@ -127,10 +127,10 @@ h1 {
 }
 
 .article-image figcaption {
-  font-size: 0.75rem;
+  font-size: 14px;
   color: var(--text-color-sec);
-  margin-top: 12px;
-  font-style: italic;
+  margin-top: 14px;
+  text-align: center;
 }
 
 .code-container {

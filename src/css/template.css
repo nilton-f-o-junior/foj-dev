@@ -1,46 +1,26 @@
-/*
-  Colors provided by Catppuccin (https://github.com/catppuccin/catppuccin)
-  License: MIT
-  Copyright (c) 2021 Catppuccin
-*/
-
-:root {
-  --font-mono: 'JetBrains Mono', monospace;
-  --bg-color-pri: #11111B;
-  --bg-color-sec: #181825;
-  --text-color-pri: #CDD6F4;
-  --text-color-sec: #BAC2DE;
-  --tag-color-blue: #89B4FA;
-  --tag-color-yellow: #F9E2AF;
-  --tag-color-orange: #FAB387;
-  --tag-color-green: #A6E3A1;
-  --tag-color-red: #F38BA8;
-  --border-color: #313244;
-  --code-bg: #1E1E2E;
-  --code-header-bg: #313244;
-}
-
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
-  background-color: var(--bg-color-pri);
   min-height: 100vh;
+  background-color: var(--bg-primary); 
 }
 
 body {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  line-height: 1.8;
-  color: var(--text-color-pri);
-  background-color: var(--bg-color-sec);
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 2rem);
   margin: 2rem 2rem 0 2rem;
   padding: 2rem;
   border-radius: 8px 8px 0 0;
-  min-height: calc(100vh - 2rem);
+  color: var(--text-primary-template);
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.8;
+  background-color: var(--bg-secondary);
 }
 
 .container {
@@ -51,56 +31,46 @@ body {
 
 .article-header {
   margin-bottom: 40px;
-  border-bottom: 2px solid var(--border-color);
   padding-bottom: 32px;
+  border-bottom: 2px solid var(--color-border);
 }
 
 .article-date {
-  color: var(--tag-color-blue);
-  font-size: 0.85rem;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 12px;
+  color: var(--color-tag-blue);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 h1 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  line-height: 1.3;
-  color: var(--text-color-pri);
-  font-weight: 700;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
+  color: var(--text-primary-template);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 .article-summary {
-  font-style: italic;
-  color: var(--text-color-sec);
-  font-size: 1.1rem;
-  border-left: 4px solid var(--tag-color-blue);
-  padding-left: 20px;
   margin-top: 20px;
-  line-height: 1.6;
-}
-
-.article-summary {
-  font-style: italic;
-  color: var(--text-color-sec);
-  font-size: 1.1rem;
+  padding-left: 20px;
   border-left: 2px solid var(--accent-color);
-  padding-left: 20px;
-  margin-top: 20px;
+  color: var(--text-secondary-template);
+  font-size: 1.1rem;
+  font-style: italic;
   line-height: 1.8;
 }
 
 .article-content {
-   color: var(--text-color-pri);
- }
+   color: var(--text-primary-template);
+}
 
 .article-content p {
   margin-bottom: 20px;
@@ -127,19 +97,19 @@ h1 {
 }
 
 .article-image figcaption {
-  font-size: 14px;
-  color: var(--text-color-sec);
   margin-top: 14px;
+  color: var(--text-secondary-template);
+  font-size: 14px;
   text-align: center;
 }
 
 .code-container {
-  background: var(--code-bg);
-  color: var(--text-color-pri);
-  border-radius: 8px;
   margin: 30px 0;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
   overflow: hidden;
-   border: 1px solid var(--border-color);
+  color: var(--text-primary-template);
+  background: var(--bg-code);
   transition: box-shadow 0.3s ease;
 }
 
@@ -148,35 +118,35 @@ h1 {
 }
 
 .code-header {
-  background: var(--code-header-bg);
-  padding: 12px 20px;
-   display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--color-border);
   font-size: 0.85rem;
-  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-code-header);
 }
 
 .code-header span {
-  color: var(--tag-color-yellow);
+  color: var(--color-tag-yellow);
   font-weight: 600;
 }
 
 .copy-btn {
-  background: var(--tag-color-blue);
-  border: none;
-  color: var(--bg-color-pri);
   padding: 6px 14px;
-  cursor: pointer;
+  border: none;
   border-radius: 6px;
-  font-family: var(--font-mono);
+  color: var(--bg-color-pri);
+  font-family: var(--font-main);
   font-size: 0.8rem;
   font-weight: 600;
+  background: var(--color-tag-blue);
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .copy-btn:hover {
-  background: var(--tag-color-green);
+  background: var(--color-tag-green);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(166, 227, 161, 0.3);
 }
@@ -186,43 +156,43 @@ h1 {
 }
 
 .copy-btn.copied {
-  background: var(--tag-color-green);
   color: var(--bg-color-pri);
+  background: var(--color-tag-green);
 }
 
 pre {
+  margin: 0;
   padding: 20px;
-   margin: 0;
   overflow-x: auto;
   font-size: 0.9rem;
 }
 
 pre::-webkit-scrollbar {
-   height: 8px;
+  height: 8px;
 }
 
 pre::-webkit-scrollbar-track {
-   background: var(--code-bg);
+  background: var(--bg-code);
 }
 
 pre::-webkit-scrollbar-thumb {
-  background: var(--border-color);
   border-radius: 4px;
+  background: var(--color-border);
 }
 
 pre::-webkit-scrollbar-thumb:hover {
-  background: var(--tag-color-blue);
+  background: var(--color-tag-blue);
 }
 
 code {
-  font-family: var(--font-mono);
-  color: var(--text-color-pri);
+  color: var(--text-primary-template);
+  font-family: var(--font-main);
 }
 
-.keyword { color: var(--tag-color-red); }
-.function { color: var(--tag-color-blue); }
-.string { color: var(--tag-color-green); }
-.comment { color: var(--text-color-sec); font-style: italic; }
+.keyword { color: var(--color-tag-red); }
+.function { color: var(--color-tag-blue); }
+.string { color: var(--color-tag-green); }
+.comment { color: var(--text-secondary-template); font-style: italic; }
 
 @media (max-width: 768px) {
    body {

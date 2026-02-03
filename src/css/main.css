@@ -1,8 +1,4 @@
 /*
-  Configuração Global do CSS
-*/
-
-/*
   Colors provided by Catppuccin (https://github.com/catppuccin/catppuccin)
   License: MIT
   Copyright (c) 2021 Catppuccin
@@ -10,253 +6,67 @@
 
 :root {
 
-    /* Fontes */
-    --font-mono: 'JetBrains Mono', monospace;
-    --font-size-desktop: 1.5rem;
-    --font-size-mobile: 1rem;
+  /* 1. colors */
+  --white: #fff;
+  --black: #000;
+  --rosewater: #f5e0dc;
+  --flamingo: #f2cdcd;
+  --pink: #f5c2e7;
+  --mauve: #cba6f7;
+  --red: #f38ba8;
+  --maroon: #eba0ac;
+  --peach: #fab387;
+  --yellow: #f9e2af;
+  --green: #a6e3a1;
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --sapphire: #74c7ec;
+  --blue: #89b4fa;
+  --lavender: #b4befe;
+  --text: #cdd6f4;
+  --subtext1: #bac2de;
+  --subtext0: #a6adc8;
+  --overlay2: #9399b2;
+  --overlay1: #7f849c;
+  --overlay0: #6c7086;
+  --surface2: #585b70;
+  --surface1: #45475a;
+  --surface0: #313244;
+  --base: #1e1e2e;
+  --mantle: #181825;
+  --crust: #11111b;
 
-    /* Cor do Texto */
-    --text-color: #cdd6f4;
-    --text-color-white: #fff;
-    --text-color-subtext: #9399b2;
+  /* 2. tokens */
+  --bg-primary: var(--base);
+  --bg-secondary: var(--crust);
 
-    /* Background */
-    --bg-color-azul-pri: #1e1e2e;
-    --bg-color-azul-sec: #11111b;
-    
-    /* Cores */
-    --color-flamingo: #f2cdcd;
-    --color-red: #f38ba8;
-    --color-peach: #fab387;
-    --color-yellow: #f9e2af;
-    --color-green: #a6e3a1;
-    --color-blue: #89b4fa;
+  --bg-code: var(--base);
+  --bg-code-header: var(--surface0);
+  
+  --text-primary: var(--overlay2);
+  --text-secondary: var(--white);
+  --text-tertiary: var(--text);
+  
+  --text-primary-template: var(--text);
+  --text-secondary-template: var(--subtext1);
+
+  --color-details: var(--flamingo);
+  --color-border: var(--surface0);
+
+  --color-tag-blue: var(--blue);
+  --color-tag-yellow: var(--yellow);
+  --color-tag-peach: var(--peach);
+  --color-tag-green: var(--green);
+  --color-tag-red: var(--red);
+
+  /* 3. typography  */
+  --font-main: 'JetBrains Mono', monospace;
+
+  --fs-sm: clamp(0.8rem, 0.1vw + 0.78rem, 0.89rem);
+  --fs-base: clamp(1rem, 0.3vw + 0.93rem, 1.2rem);
+  --fs-md: clamp(1.25rem, 0.6vw + 1.1rem, 1.6rem);
+  --fs-lg: clamp(1.56rem, 1.1vw + 1.29rem, 2.1rem);
+  --fs-xl: clamp(2.44rem, 2.5vw + 1.8rem, 3.8rem);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-html {
-    background-color: var(--bg-color-azul-pri);
-    min-height: 100vh;
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--bg-color-azul-sec);
-    font-family: var(--font-mono);
-    color: var(--text-color-white);
-    margin: 2rem 2rem 0 2rem;
-    padding: 2rem;
-    border-radius: 8px 8px 0 0;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.6;
-    min-height: calc(100vh - 2rem);
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1rem;
-    position: relative;
-    z-index: 100;
-}
-
-.github-icon a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-}
-
-.github-icon a:hover { transform: scale(1.1); }
-
-.github-icon a:focus {
-    outline: 2px solid var(--color-flamingo);
-    outline-offset: 4px;
-    border-radius: 50%;
-}
-
-.author {
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-}
-
-.author h1 {
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-    font-weight: 400;
-    margin-bottom: 1rem;
-    animation: fadeInUp 0.8s ease forwards;
-}
-
-.author p {
-    color: var(--text-color-subtext);
-    font-size: clamp(1rem, 3.5vw, 1.2rem);
-    animation: fadeInUp 0.8s ease 0.2s forwards;
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.scroll-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    bottom: 4rem;
-    left: 50%;
-    position: absolute;
-    transform: translateX(-50%);
-    color: var(--text-color-subtext);
-    animation: bounce 2s infinite;    
-    cursor: pointer;
-    transition: color 0.3s ease;    
-}
-
-.scroll-indicator:hover {
-    color: var(--color-flamingo);
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-    40% { transform: translate(-50%, -10px); }
-    60% { transform: translate(-50%, -5px); }
-}
-
-.filter-section {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.filter-label {
-    color: var(--text-color-subtext);
-    font-size: 0.9rem;
-}
-
-.filter-btn {
-    background: transparent;
-    border: 1px solid var(--text-color-subtext);
-    color: var(--text-color);
-    padding: 4px 12px;
-    font-size: 0.75rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: var(--font-mono);
-    transition: all 0.3s ease;
-}
-
-.filter-btn:hover, .filter-btn.active {
-    border-color: var(--color-flamingo);
-    color: var(--color-flamingo);
-}
-
-.content-section {
-    max-width: 900px;
-    margin: 0 auto 64px auto;
-    padding: 2rem;
-    flex-grow: 1;
-}
-
-.post-item {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    margin-bottom: 4rem;
-    gap: 2rem;
-    transition: transform 0.3s ease, opacity 0.4s ease;
-}
-
-.post-item.hidden {
-    display: none;
-}
-
-.post-item:hover { transform: translateX(4px); }
-
-.post-date {
-    color: var(--text-color-subtext);
-    font-size: 0.9rem;
-    padding-top: 0.5rem;
-}
-
-.post-content h2 {
-    color: var(--text-color-white);
-    font-size: clamp(1.3rem, 4vw, 1.8rem);
-    font-weight: 500;
-    margin-bottom: 0.75rem;
-}
-
-.post-content a {
-    color: var(--text-color-white);
-    text-decoration: none;
-    position: relative;
-}
-
-.post-content a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-flamingo);
-    transition: width 0.3s ease;
-}
-
-.post-content a:hover::after { width: 100%; }
-
-.tag-blue {
-    display: inline-block;
-    background: var(--color-blue);
-    color: var(--text-color-white);
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-}
-
-.post-description {
-    color: var(--text-color);
-    max-width: 600px;
-    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-    line-height: 1.8;
-}
-
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-color-subtext);
-    font-size: 0.8rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-@media (max-width: 768px) {
-    body { margin: 0.75rem; padding: 1rem; }
-    .post-item { grid-template-columns: 1fr; gap: 0.5rem; }
-    .author { height: 80vh; }
-}
-
-/*
-
-.sr-only {
-    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
-}
-
-*/

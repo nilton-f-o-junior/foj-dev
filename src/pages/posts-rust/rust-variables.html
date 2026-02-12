@@ -6,137 +6,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nilton F. O. Júnior | Rust - Variáveis</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/template.css">
 </head>
 
 <body>
 
-<article class="container">
+  <article class="container">
 
-  <header class="article-header">
-    <p class="article-date">31 Janeiro | 2026</p>
-    <h1>Variáveis</h1>
-    <p class="article-summary">Variáveis são espaços nomeados na memória que podem armazenar um valor. Você entende como o computador organiza essa informação?</p>
-  </header>
+    <header class="article-header">
 
-  <section class="article-content">
-
-    <p>Programar nada mais é do que dar instruções para que um computador execute tarefas. Para que isso aconteça, a máquina utiliza dois recursos fundamentais que trabalham juntos: a <strong>memória</strong> e o <strong>processamento</strong>.</p>
-
-    <p><strong>- Memória:</strong> funciona como um "caveta" onde armazenamos informações, sejam elas números, textos ou imagens;</p>
-    <p><strong>- Processamento:</strong> é o "cérebro" que realiza cálculos e manipula os dados guardados na memória para gerar um resultado.</p>
-
-    <h2>O Sistema Binário</h2>
-    
-    <p>Como o computador é uma máquina eletrônica, ele se comunica através de sinais elétricos: a presença ou a ausência de corrente.</p>
-
-    <p>Para traduzir isso para o mundo lógico, utilizamos o <strong>sistema binário</strong>, composto por apenas dois dígitos: 0 (desligado) e 1 (ligado).</p>
-  
-    <p>Cada um desses dígitos é chamado de <strong>bit</strong> (a menor unidade de informação). Combinando esses bits, o computador consegue representar números maiores e instruções complexas:</p>
-
-    <div class="code-container">
-      <div class="code-header">
-        <span>Binário</span>
-        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      <div class="home-icon">
+        <a href="/index.html" target="_blank" rel="noopener noreferrer" aria-label="Página Principal">
+        <img src="/src/assets/images/icons/home-icon.svg" alt="" width="32" height="32">
+        </a>
       </div>
-      <pre><code>Número 0: 0
-Número 1: 1
-Número 2: 10
-Número 3: 11</code></pre>
-    </div>
 
-    <h2>De Bits a Bytes</h2>
+      <p class="article-date">31 Janeiro | 2026</p>
+      <h1>Variáveis</h1>
+      <p class="article-summary">Variáveis são espaços nomeados na memória que podem armazenar um valor. Você entende
+        como o computador organiza essa informação?</p>
+    </header>
 
-    <p>A unidade básica é o Bit, mas para representar informações mais complexas, combinamos 8 bits para formar um <strong>Byte</strong>.</p>
-    
-    <p>Imagine um Byte como uma sequência de 8 interruptores. Se todos estiverem desligados (00000000), temos o número 0. Se apenas o último estiver ligado (00000001), temos o número 1. A maior combinação possível é quando todos os 8 bits estão ligados (11111111), o que representa o número 255.</p>
-  
-    <h2>O Conceito de Variáveis</h2>
+    <section class="article-content">
 
-    <p>De forma simples, uma variável é um espaço reservado na memória para armazenar esses valores. Como o próprio nome diz, o conteúdo desse espaço pode "variar" ao longo do tempo, mas o "rótulo" que damos a ele permanece o mesmo.</p>
+      <p>Programar nada mais é do que dar instruções para que um computador execute tarefas. Para que isso aconteça, a
+        máquina utiliza dois recursos fundamentais que trabalham juntos: a <strong>memória</strong> e o
+        <strong>processamento</strong>.
+      </p>
 
-    <h2>Analogia do Armário</h2>
+      <p><strong>- Memória:</strong> funciona como um "caveta" onde armazenamos informações, sejam elas números, textos
+        ou imagens;</p>
+      <p><strong>- Processamento:</strong> é o "cérebro" que realiza cálculos e manipula os dados guardados na memória
+        para gerar um resultado.</p>
 
-    <p>Para entender como isso funciona na prática, imagine a memória do computador como um grande armário cheio de gavetas. Inicialmente, essas gavetas estão vazias e não possuem nenhuma etiqueta.</p>
+      <h2>O Sistema Binário</h2>
 
-    <figure class="article-image">
-      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-01.png" alt="Armário com gavetas vazias">
-      <figcaption>Representação da memória inicial vazia.
-        <br>
-        <small><strong>Fonte:</strong> Próprio Autor</small>
-      </figcaption>
-    </figure>
+      <p>Como o computador é uma máquina eletrônica, ele se comunica através de sinais elétricos: a presença ou a
+        ausência de corrente.</p>
 
-    <p>Se você decidir guardar três informações diferentes, sua tendência natural seria colocá-las em gavetas sequenciais (uma ao lado da outra) para manter a organização.</p>
+      <p>Para traduzir isso para o mundo lógico, utilizamos o <strong>sistema binário</strong>, composto por apenas dois
+        dígitos: 0 (desligado) e 1 (ligado).</p>
 
-    <figure class="article-image">
-      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-02.png" alt="Dados em gavetas sequenciais">
-      <figcaption>Organização ideal: dados em endereços vizinhos.
-        <br>      
-        <small><strong>Fonte:</strong> Próprio Autor</small>
-      </figcaption>
-    </figure>
+      <p>Cada um desses dígitos é chamado de <strong>bit</strong> (a menor unidade de informação). Combinando esses
+        bits, o computador consegue representar números maiores e instruções complexas:</p>
 
-    <p>No entanto, o computador nem sempre consegue fazer isso. Como muitos programas rodam ao mesmo tempo, as gavetas vizinhas podem já estar ocupadas. Por isso, os dados acabam ficando espalhados em lugares distintos do "armário".</p>
+      <div class="code-container">
+        <div class="code-header">
+          <span>Binário</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+        </div>
+        <pre><code>Número 0: 0
+            Número 1: 1
+            Número 2: 10
+            Número 3: 11</code></pre>
+      </div>
 
-    <figure class="article-image">
-      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-03.png" alt="Dados espalhados no armário">
-      <figcaption>Memória fragmentada: dados ocupando espaços disponíveis aleatórios.
-        <br>
-        <small><strong>Fonte:</strong> Próprio Autor</small>
-      </figcaption>
-    </figure>
+      <h2>De Bits a Bytes</h2>
 
-    <p>Agora, imagine que em vez de 16 gavetas, tivéssemos 45 ou até milhões delas. Ficaria impossível lembrar de cabeça onde cada dado foi guardado, certo?</p>
+      <p>A unidade básica é o Bit, mas para representar informações mais complexas, combinamos 8 bits para formar um
+        <strong>Byte</strong>.
+      </p>
 
-    <figure class="article-image">
-      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-04.png" alt="Grande quantidade de gavetas">
-      <figcaption>O desafio de gerenciar grandes volumes de dados.
-        <br>
-        <small><strong>Fonte:</strong> Próprio Autor</small>
-      </figcaption>
-    </figure>
+      <p>Imagine um Byte como uma sequência de 8 interruptores. Se todos estiverem desligados (00000000), temos o número
+        0. Se apenas o último estiver ligado (00000001), temos o número 1. A maior combinação possível é quando todos os
+        8 bits estão ligados (11111111), o que representa o número 255.</p>
 
-    <p>Para resolver esse caos, a memória utiliza <strong>endereços</strong>. Cada gaveta possui um código único e exclusivo. Assim, o computador não apenas guarda a informação, mas registra exatamente em qual "<strong>endereço</strong>" ela foi colocada para poder buscá-la depois.</p>
+      <h2>O Conceito de Variáveis</h2>
 
-    <figure class="article-image">
-      <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-05.png" alt="Endereçamento de memória">
-      <figcaption>Endereços únicos identificando cada posição na memória.
-        <br>
-        <small><strong>Fonte:</strong> Próprio Autor</small>
-      </figcaption>
-    </figure>
+      <p>De forma simples, uma variável é um espaço reservado na memória para armazenar esses valores. Como o próprio
+        nome diz, o conteúdo desse espaço pode "variar" ao longo do tempo, mas o "rótulo" que damos a ele permanece o
+        mesmo.</p>
 
-    <p>Um detalhe crucial: na memória, cada gaveta suporta exatamente <strong>1 Byte</strong>. Se a informação que você quer guardar for pequena, ela ocupa uma gaveta. Mas, se a informação for grande (como uma foto ou um texto longo), o sistema a divide em pedaços e ocupa duas, três ou quantas gavetas forem necessárias para armazenar o dado completo.</p>
+      <h2>Analogia do Armário</h2>
 
-    <div class="code-container">
-        <pre><code>1 Byte   = [00000000]
-Endereço = 0xCB20
-[00000000] + 0xCB20 = Dado</code></pre>
-    </div>
+      <p>Para entender como isso funciona na prática, imagine a memória do computador como um grande armário cheio de
+        gavetas. Inicialmente, essas gavetas estão vazias e não possuem nenhuma etiqueta.</p>
 
-    <h2>Tipos de Dados</h2>
-    
-    <p>Essa analogia do armário ajuda a entender como a memória organiza a informação. Na prática, o resultado desse armazenamento é o que chamamos de dado. Para facilitar a manipulação desses dados, nós os classificamos em três tipos principais:</p>
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-01.png" alt="Armário com gavetas vazias">
+        <figcaption>Representação da memória inicial vazia.
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
 
-    <p><strong>- Escalares (ou Primitivos):</strong>um valor único e simples, como int (números inteiros), float (números decimais), bool (verdadeiro ou falso) e char (um único caractere);</p>
+      <p>Se você decidir guardar três informações diferentes, sua tendência natural seria colocá-las em gavetas
+        sequenciais (uma ao lado da outra) para manter a organização.</p>
 
-    <p><strong>- Compostos (ou Estruturados):</strong>coleções que agrupam vários dados em uma única estrutura, como Arrays (listas) e Tuplas;</p>
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-02.png"
+          alt="Dados em gavetas sequenciais">
+        <figcaption>Organização ideal: dados em endereços vizinhos.
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
 
-    <p><strong>- Referência:</strong>diferente dos outros, este não guarda o valor final, mas sim o endereço de onde o dado está na memória. É o que conhecemos como 'Ponteiro'.</p>
+      <p>No entanto, o computador nem sempre consegue fazer isso. Como muitos programas rodam ao mesmo tempo, as gavetas
+        vizinhas podem já estar ocupadas. Por isso, os dados acabam ficando espalhados em lugares distintos do
+        "armário".</p>
 
-    <p>Caso queira continuar estudando e entender como a memória lida com esse dado, <a href="rust-memoria.html">segue o link</a>. Bons estudos!</p>
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-03.png" alt="Dados espalhados no armário">
+        <figcaption>Memória fragmentada: dados ocupando espaços disponíveis aleatórios.
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
 
-    <blockquote class="quote">
-      <p>"<em>A beleza que vive no ato de compartilhar algo com o outro.</em>" — Monja Coen</p>      
-    </blockquote>
-       
-  </section>
-</article>
+      <p>Agora, imagine que em vez de 16 gavetas, tivéssemos 45 ou até milhões delas. Ficaria impossível lembrar de
+        cabeça onde cada dado foi guardado, certo?</p>
 
-<script src="../js/template.js" defer></script>
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-04.png"
+          alt="Grande quantidade de gavetas">
+        <figcaption>O desafio de gerenciar grandes volumes de dados.
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
+
+      <p>Para resolver esse caos, a memória utiliza <strong>endereços</strong>. Cada gaveta possui um código único e
+        exclusivo. Assim, o computador não apenas guarda a informação, mas registra exatamente em qual
+        "<strong>endereço</strong>" ela foi colocada para poder buscá-la depois.</p>
+
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-05.png" alt="Endereçamento de memória">
+        <figcaption>Endereços únicos identificando cada posição na memória.
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
+
+      <p>Um detalhe crucial: na memória, cada gaveta suporta exatamente <strong>1 Byte</strong>. Se a informação que
+        você quer guardar for pequena, ela ocupa uma gaveta. Mas, se a informação for grande (como uma foto ou um texto
+        longo), o sistema a divide em pedaços e ocupa duas, três ou quantas gavetas forem necessárias para armazenar o
+        dado completo.</p>
+
+      <div class="code-container">
+        <pre><code>1 Byte = [00000000]
+            Endereço = 0xCB20
+            [00000000] + 0xCB20 = Dado</code></pre>
+      </div>
+
+      <h2>Tipos de Dados</h2>
+
+      <p>Essa analogia do armário ajuda a entender como a memória organiza a informação. Na prática, o resultado desse
+        armazenamento é o que chamamos de dado. Para facilitar a manipulação desses dados, nós os classificamos em três
+        tipos principais:</p>
+
+      <p><strong>- Escalares (ou Primitivos):</strong>um valor único e simples, como int (números inteiros), float
+        (números decimais), bool (verdadeiro ou falso) e char (um único caractere);</p>
+
+      <p><strong>- Compostos (ou Estruturados):</strong>coleções que agrupam vários dados em uma única estrutura, como
+        Arrays (listas) e Tuplas;</p>
+
+      <p><strong>- Referência:</strong>diferente dos outros, este não guarda o valor final, mas sim o endereço de onde o
+        dado está na memória. É o que conhecemos como 'Ponteiro'.</p>
+
+      <p>Caso queira continuar estudando e entender como a memória lida com esse dado, <a href="rust-memoria.html">segue
+          o link</a>. Bons estudos!</p>
+
+      <blockquote class="quote">
+        <p>"<em>A beleza que vive no ato de compartilhar algo com o outro.</em>" — Monja Coen</p>
+      </blockquote>
+
+    </section>
+  </article>
+
+  <script src="../js/template.js" defer></script>
 
 </body>
+
 </html>

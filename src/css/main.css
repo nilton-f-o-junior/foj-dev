@@ -42,11 +42,11 @@
 
   --bg-code: var(--base);
   --bg-code-header: var(--surface0);
-  
+
   --text-primary: var(--overlay2);
   --text-secondary: var(--white);
   --text-tertiary: var(--text);
-  
+
   --text-primary-template: var(--text);
   --text-secondary-template: var(--subtext1);
 
@@ -68,5 +68,3 @@
   --fs-lg: clamp(1.56rem, 1.1vw + 1.29rem, 2.1rem);
   --fs-xl: clamp(2.44rem, 2.5vw + 1.8rem, 3.8rem);
 }
-
-

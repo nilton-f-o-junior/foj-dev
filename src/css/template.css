@@ -6,7 +6,7 @@
 
 html {
   min-height: 100vh;
-  background-color: var(--bg-primary); 
+  background-color: var(--bg-primary);
 }
 
 body {
@@ -26,19 +26,24 @@ body {
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 32px 0; 
+  padding: 32px 0;
 }
 
 .article-header {
+  position: relative;
   margin-bottom: 40px;
   padding-bottom: 32px;
   border-bottom: 2px solid var(--color-border);
+  text-align: center;
+}
+
+.home-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .article-date {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-bottom: 12px;
   color: var(--color-tag-blue);
   font-size: 0.85rem;
@@ -48,9 +53,6 @@ body {
 }
 
 h1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-bottom: 20px;
   color: var(--text-primary-template);
   font-size: 2.5rem;
@@ -59,6 +61,7 @@ h1 {
 }
 
 .article-summary {
+  text-align: left;
   margin-top: 20px;
   padding-left: 20px;
   border-left: 2px solid var(--accent-color);
@@ -69,7 +72,7 @@ h1 {
 }
 
 .article-content {
-   color: var(--text-primary-template);
+  color: var(--text-primary-template);
 }
 
 .article-content p {
@@ -189,29 +192,51 @@ code {
   font-family: var(--font-main);
 }
 
-.keyword { color: var(--color-tag-red); }
-.function { color: var(--color-tag-blue); }
-.string { color: var(--color-tag-green); }
-.comment { color: var(--text-secondary-template); font-style: italic; }
+.keyword {
+  color: var(--color-tag-red);
+}
+
+.function {
+  color: var(--color-tag-blue);
+}
+
+.string {
+  color: var(--color-tag-green);
+}
+
+.comment {
+  color: var(--text-secondary-template);
+  font-style: italic;
+}
 
 @media (max-width: 768px) {
-   body {
+  body {
     padding: 10px;
   }
-   .container {
+
+  .container {
     padding: 40px 24px;
     border-radius: 8px;
   }
-   h1 {
+
+  .home-icon a img{
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  h1 {
     font-size: 2rem;
   }
+
   .article-summary {
     font-size: 1rem;
-   }
+  }
+
   .code-header {
     padding: 10px 15px;
   }
-   pre {
+
+  pre {
     padding: 15px;
     font-size: 0.85rem;
   }
@@ -220,8 +245,9 @@ code {
 @media (max-width: 480px) {
   h1 {
     font-size: 1.75rem;
-   }
+  }
+
   .container {
     padding: 30px 20px;
-   }
+  }
 }

@@ -6,180 +6,226 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nilton F. O. Júnior | Memória</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../css/main.css">
   <link rel="stylesheet" href="../../css/template.css">
 </head>
 
 <body>
 
-<article class="container">
+  <article class="container">
 
-  <header class="article-header">
-    <p class="article-date">31 Janeiro | 2026</p>
-    <h1>Memória</h1>
-    <p class="article-summary">Ao longo da nossa carreira, é comum ouvirmos termos como Stack e Heap. Muitas vezes, acabamos deixando esse conhecimento para depois, por acreditar que seja algo exclusivo de 'baixo nível'. Hoje, vou explicar um pouco sobre o layout da memória e mostrar onde esses conceitos — e tantos outros — se encaixam.</p>
-  </header>
+    <header class="article-header">
 
-  <section class="article-content">
+      <div class="home-icon">
+        <a href="/index.html" target="_blank" rel="noopener noreferrer" aria-label="Página Principal">
+        <img src="/src/assets/images/icons/home-icon.svg" alt="" width="32" height="32">
+        </a>
+      </div>
 
-    <p>Antes de começarmos, deixo aqui uma imagem ilustrativa do layout de memória. Vamos seguir nosso estudo partindo do endereço mais alto até o mais baixo.</p>
+      <p class="article-date">31 Janeiro | 2026</p>
+      <h1>Memória</h1>
+      <p class="article-summary">Ao longo da nossa carreira, é comum ouvirmos termos como Stack e Heap. Muitas vezes,
+        acabamos deixando esse conhecimento para depois, por acreditar que seja algo exclusivo de 'baixo nível'. Hoje,
+        vou explicar um pouco sobre o layout da memória e mostrar onde esses conceitos — e tantos outros — se encaixam.
+      </p>
+    </header>
 
-    <figure class="article-image">
+    <section class="article-content">
+
+      <p>Antes de começarmos, deixo aqui uma imagem ilustrativa do layout de memória. Vamos seguir nosso estudo partindo
+        do endereço mais alto até o mais baixo.</p>
+
+      <figure class="article-image">
         <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria.png" alt="Layout de uma Memória">
         <figcaption>Layout de uma memória
           <br>
           <small><strong>Fonte:</strong> Próprio Autor</small>
         </figcaption>
-    </figure>
+      </figure>
 
-    <p>Vamos começar estudando por Kernel:</p>
-    
-    <p>Uma das primeiras coisas que a arquitetura de memória define é o espaço do Sistema Operacional (Kernel Space). Ele ocupa os endereços mais altos para garantir que o 'cérebro' do computador tenha uma área reservada e protegida, permitindo que todos os outros processos funcionem com segurança abaixo dele.</p>
-    
-    <figure class="article-image">
-        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-kernel.png" alt="Layout de Memória - Kernel">
+      <p>Vamos começar estudando por Kernel:</p>
+
+      <p>Uma das primeiras coisas que a arquitetura de memória define é o espaço do Sistema Operacional (Kernel Space).
+        Ele ocupa os endereços mais altos para garantir que o 'cérebro' do computador tenha uma área reservada e
+        protegida, permitindo que todos os outros processos funcionem com segurança abaixo dele.</p>
+
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-kernel.png"
+          alt="Layout de Memória - Kernel">
         <figcaption>Kernel
           <br>
           <small><strong>Fonte:</strong> Próprio Autor</small>
         </figcaption>
-    </figure>
+      </figure>
 
-    <p>Nosso próximo item é o ambiente:</p>
-    
-    <p>Com o Kernel já residente na memória, o sistema prepara as variáveis de ambiente. Essas variáveis funcionam como um guia de configuração para os programas, definindo o 'cenário' onde eles serão executados e permitindo que saibam onde encontrar arquivos e recursos do sistema.</p>
- 
-    <figure class="article-image">
-        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-ambiente.png" alt="Layout de Memória - Ambiente">
+      <p>Nosso próximo item é o ambiente:</p>
+
+      <p>Com o Kernel já residente na memória, o sistema prepara as variáveis de ambiente. Essas variáveis funcionam
+        como um guia de configuração para os programas, definindo o 'cenário' onde eles serão executados e permitindo
+        que saibam onde encontrar arquivos e recursos do sistema.</p>
+
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-ambiente.png"
+          alt="Layout de Memória - Ambiente">
         <figcaption>Ambiente
           <br>
           <small><strong>Fonte:</strong> Próprio Autor</small>
         </figcaption>
-    </figure>
-
-   <p>Se você entendeu um pouco melhor como funciona o ambiente, agora podemos ir para os argumentos:</p>
-
-   <p>Depois que o sistema inicializa e as variáveis de ambiente são carregadas, a memória organiza os Argumentos, que são as instruções extras que dizem como o programa deve começar.</p>
-  
-      <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-argumentos.png" alt="Layout de Memória - Argumentos">
-          <figcaption>Layout de Memória - Argumentos
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
       </figure>
 
-    <p>A quantidade de argumentos vem logo depois, até porque o sistema precisa saber exatamente quantas instruções ele recebeu, garantindo assim que ele processe cada uma delas na ordem certa para tudo funcionar como deveria.</p>
-  
-      <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-qtd-argumentos.png" alt="Layout de Memória - Quantidade de Argumentos">
-          <figcaption>Layout de Memória - Quantidade de Argumentos
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
-      </figure>
+      <p>Se você entendeu um pouco melhor como funciona o ambiente, agora podemos ir para os argumentos:</p>
 
-      <p>Agora que entendemos como o sistema se organiza, chegamos aos Dados das Funções. É nesta área que o programa ganha vida, as funções são empilhadas e executadas conforme a necessidade, lembrando que a primeira a ser chamada é a main.</p>
+      <p>Depois que o sistema inicializa e as variáveis de ambiente são carregadas, a memória organiza os Argumentos,
+        que são as instruções extras que dizem como o programa deve começar.</p>
 
       <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-funcoes.png" alt="Layout de Memória - Dados das Funções">
-          <figcaption>Layout de Memória - Dados das Funções
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-argumentos.png"
+          alt="Layout de Memória - Argumentos">
+        <figcaption>Layout de Memória - Argumentos
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
       </figure>
 
-      <p>Para facilitar nosso entendimento podemos visualizar esse bloco como uma Pilha (Stack), no topo (endereços mais altos), o sistema injeta o Ambiente e os Argumentos com sua Quantidade (argc). Imediatamente abaixo, a execução começa e a pilha continua crescendo para baixo conforme os Dados das Funções e suas variáveis locais são criadas. Logo, uma estrutura única, onde o contexto do sistema e a execução do código convivem.</p>
+      <p>A quantidade de argumentos vem logo depois, até porque o sistema precisa saber exatamente quantas instruções
+        ele recebeu, garantindo assim que ele processe cada uma delas na ordem certa para tudo funcionar como deveria.
+      </p>
 
       <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-stack.png" alt="Layout de Memória - Pilha (Stack)">
-          <figcaption>Layout de Memória - Pilha (Stack)
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-qtd-argumentos.png"
+          alt="Layout de Memória - Quantidade de Argumentos">
+        <figcaption>Layout de Memória - Quantidade de Argumentos
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
       </figure>
 
-      <p>Como a alocação de memória ocorre de forma dinâmica, tanto a Stack quanto o Heap podem expandir conforme as necessidades do programa. Por isso, a arquitetura reserva um Espaço Disponível entre ambos: a Stack cresce para baixo e o Heap para cima. Caso a demanda de memória seja excessiva e as duas áreas se encontrem, ocorre uma colisão conhecida como estouro de memória (Memory Overflow).</p>
+      <p>Agora que entendemos como o sistema se organiza, chegamos aos Dados das Funções. É nesta área que o programa
+        ganha vida, as funções são empilhadas e executadas conforme a necessidade, lembrando que a primeira a ser
+        chamada é a main.</p>
 
       <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-espaco-disponivel.png" alt="Layout de Memória - Espaço Disponível">
-          <figcaption>Layout de Memória - Espaço Disponível
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-funcoes.png"
+          alt="Layout de Memória - Dados das Funções">
+        <figcaption>Layout de Memória - Dados das Funções
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
       </figure>
 
-      <p>Em vez de carregar o arquivo inteiro para a RAM, o sistema operacional estabelece um vínculo lógico entre a memória e o armazenamento. Os dados são carregados em 'páginas' apenas quando acessados, o que otimiza o uso de recursos e acelera a execução, especialmente em arquivos grandes ou bibliotecas compartilhadas.</p>
+      <p>Para facilitar nosso entendimento podemos visualizar esse bloco como uma Pilha (Stack), no topo (endereços mais
+        altos), o sistema injeta o Ambiente e os Argumentos com sua Quantidade (argc). Imediatamente abaixo, a execução
+        começa e a pilha continua crescendo para baixo conforme os Dados das Funções e suas variáveis locais são
+        criadas. Logo, uma estrutura única, onde o contexto do sistema e a execução do código convivem.</p>
 
       <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-memoria-mapeada.png" alt="Layout de Memória - Memória Mapeada">
-          <figcaption>Layout de Memória - Memória Mapeada
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-stack.png"
+          alt="Layout de Memória - Pilha (Stack)">
+        <figcaption>Layout de Memória - Pilha (Stack)
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
       </figure>
 
-      <p>A alocação dinâmica é quando o seu programa pede um pedaço de memória enquanto está rodando, porque ele não sabe de antemão de quanto espaço vai precisar. Alguns problemas bem comuns da programação acontece aqui, pois você pode alocar memória, porém tem que depois lembrar de liberar essa memória alocada.</p>
-
-        <figure class="article-image">
-            <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-heap.png" alt="Layout de Memória - Memória Mapeada">
-            <figcaption>Layout de Memória - Memória Mapeada
-              <br>
-              <small><strong>Fonte:</strong> Próprio Autor</small>
-            </figcaption>
-        </figure>
-
-       <p>.bss é uma seção específica da memória de um programa que armazena variáveis globais e estáticas que foram declaradas, mas não foram inicializadas com nenhum valor específico.</p>
-
-       <figure class="article-image">
-           <img src="../../assets/images/posts-rust/layout-memoria/layout-bss.png" alt="Layout de Memória - .bss">
-           <figcaption>Layout de Memória - .bss
-             <br>
-             <small><strong>Fonte:</strong> Próprio Autor</small>
-           </figcaption>
-       </figure>
-
-
-      <p>Enquanto o .bss cuida do que está "vazio", o .data é responsável por armazenar todas as variáveis globais e estáticas que você já inicializou com um valor específico no seu código.</p>
+      <p>Como a alocação de memória ocorre de forma dinâmica, tanto a Stack quanto o Heap podem expandir conforme as
+        necessidades do programa. Por isso, a arquitetura reserva um Espaço Disponível entre ambos: a Stack cresce para
+        baixo e o Heap para cima. Caso a demanda de memória seja excessiva e as duas áreas se encontrem, ocorre uma
+        colisão conhecida como estouro de memória (Memory Overflow).</p>
 
       <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-data.png" alt="Layout de Memória - .data">
-          <figcaption>Layout de Memória - .data
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-espaco-disponivel.png"
+          alt="Layout de Memória - Espaço Disponível">
+        <figcaption>Layout de Memória - Espaço Disponível
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
       </figure>
 
-      <p>.rodata é o segmento de memória destinado exclusivamente a dados que o programa pode ler, mas nunca alterar durante a execução.</p>
+      <p>Em vez de carregar o arquivo inteiro para a RAM, o sistema operacional estabelece um vínculo lógico entre a
+        memória e o armazenamento. Os dados são carregados em 'páginas' apenas quando acessados, o que otimiza o uso de
+        recursos e acelera a execução, especialmente em arquivos grandes ou bibliotecas compartilhadas.</p>
 
       <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-rodata.png" alt="Layout de Memória - .rodata">
-          <figcaption>Layout de Memória - .rodata
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-memoria-mapeada.png"
+          alt="Layout de Memória - Memória Mapeada">
+        <figcaption>Layout de Memória - Memória Mapeada
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
       </figure>
 
-      <p>É no .text que o seu código realmente vive depois de ser transformado em linguagem de máquina, armazenando as instruções binárias.</p>
+      <p>A alocação dinâmica é quando o seu programa pede um pedaço de memória enquanto está rodando, porque ele não
+        sabe de antemão de quanto espaço vai precisar. Alguns problemas bem comuns da programação acontece aqui, pois
+        você pode alocar memória, porém tem que depois lembrar de liberar essa memória alocada.</p>
 
       <figure class="article-image">
-          <img src="../../assets/images/posts-rust/layout-memoria/layout-text.png" alt="Layout de Memória - .text">
-          <figcaption>Layout de Memória - .text
-            <br>
-            <small><strong>Fonte:</strong> Próprio Autor</small>
-          </figcaption>
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-memoria-heap.png"
+          alt="Layout de Memória - Memória Mapeada">
+        <figcaption>Layout de Memória - Memória Mapeada
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
       </figure>
 
-   <p>Caso queira continuar estudando e entender um pouco melhor sobre alguns problemas comuns gerados por um código que não soube manipular bem a memória, <a href="LINK_AQUI">segue o link</a>. Bons estudos!</p>
+      <p>.bss é uma seção específica da memória de um programa que armazena variáveis globais e estáticas que foram
+        declaradas, mas não foram inicializadas com nenhum valor específico.</p>
+
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-bss.png" alt="Layout de Memória - .bss">
+        <figcaption>Layout de Memória - .bss
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
+
+
+      <p>Enquanto o .bss cuida do que está "vazio", o .data é responsável por armazenar todas as variáveis globais e
+        estáticas que você já inicializou com um valor específico no seu código.</p>
+
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-data.png" alt="Layout de Memória - .data">
+        <figcaption>Layout de Memória - .data
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
+
+      <p>.rodata é o segmento de memória destinado exclusivamente a dados que o programa pode ler, mas nunca alterar
+        durante a execução.</p>
+
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-rodata.png" alt="Layout de Memória - .rodata">
+        <figcaption>Layout de Memória - .rodata
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
+
+      <p>É no .text que o seu código realmente vive depois de ser transformado em linguagem de máquina, armazenando as
+        instruções binárias.</p>
+
+      <figure class="article-image">
+        <img src="../../assets/images/posts-rust/layout-memoria/layout-text.png" alt="Layout de Memória - .text">
+        <figcaption>Layout de Memória - .text
+          <br>
+          <small><strong>Fonte:</strong> Próprio Autor</small>
+        </figcaption>
+      </figure>
+
+      <p>Caso queira continuar estudando e entender um pouco melhor sobre alguns problemas comuns gerados por um código
+        que não soube manipular bem a memória, <a href="LINK_AQUI">segue o link</a>. Bons estudos!</p>
 
       <blockquote class="quote">
         <p>"<em>A beleza que vive no ato de compartilhar algo com o outro.</em>" — Monja Coen</p>
       </blockquote>
 
-  </section>
-</article>
+    </section>
+  </article>
 
-<script src="../js/template.js" defer></script>
+  <script src="../js/template.js" defer></script>
 
 </body>
+
 </html>

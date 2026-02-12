@@ -1,74 +1,82 @@
 <!doctype html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Blog pessoal de Nilton F. O. Junior - Desenvolvedor & Designer">
-        <meta property="og:title" content="Nilton F. O. Junior | Blog">
-        <meta property="og:description" content="Desenvolvedor & Designer">
-        <meta property="og:type" content="website">
-        <meta name="theme-color" content="#000000">
 
-        <title>Nilton F. O. Junior | Blog</title>
-        
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet"/>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blog pessoal de Nilton F. O. Junior - Desenvolvedor & Designer">
+  <meta property="og:title" content="Nilton F. O. Junior | Blog">
+  <meta property="og:description" content="Desenvolvedor & Designer">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#000000">
 
-        <link rel="stylesheet" href="src/css/main.css" />
-        <link rel="stylesheet" href="src/css/home.css" />
+  <title>Nilton F. O. Junior | Blog</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="src/css/main.css" />
+  <link rel="stylesheet" href="src/css/home.css" />
 </head>
 
-<body>        
-    <header>
-        <div class="github-icon">
-         <a href="https://github.com/nilton-f-o-junior" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil no GitHub">
-         <img src="src/assets/images/icons/github-icon.svg" alt="Ícone do GitHub" width="32" height="32">
-         </a>
-        </div>      
-    </header>
+<body>
+  <header>
+    <div class="github-icon">
+      <a href="https://github.com/nilton-f-o-junior" target="_blank" rel="noopener noreferrer"
+        aria-label="Visitar perfil no GitHub">
+        <img src="src/assets/images/icons/github-icon.svg" alt="Ícone do GitHub" width="32" height="32">
+      </a>
+    </div>
+  </header>
 
-    <section class="author" id="top">
-        <h1>Desenvolvedor & Designer</h1>
-        <p>Nilton F. O. Júnior</p>
+  <section class="author" id="top">
+    <h1>Desenvolvedor & Designer</h1>
+    <p>Nilton F. O. Júnior</p>
 
-        <button class="scroll-indicator" id="scrollBtn" aria-label="Rolar para o conteúdo">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
-        </button>        
-    </section>
+    <button class="scroll-indicator" id="scrollBtn" aria-label="Rolar para o conteúdo">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+      </svg>
+    </button>
+  </section>
 
-    <nav class="filter-section" aria-label="Filtro de postagens">
-        <span class="filter-label">Filtrar por:</span>
-        <button class="filter-btn active" data-filter="all">Tudo</button>
-        <button class="filter-btn" data-filter="Básico">Básico</button>
+  <nav class="filter-section" aria-label="Filtro de postagens">
+    <span class="filter-label">Filtrar por:</span>
+    <button class="filter-btn active" data-filter="all">Tudo</button>
+    <button class="filter-btn" data-filter="Básico">Básico</button>
 
-        <!--
+    <!--
         <button class="filter-btn" data-filter="Intermediário">Intermediário</button>
         <button class="filter-btn" data-filter="Avançado">Avançado</button>
         -->
-        
-    </nav>
 
-    <main class="content-section" id="content">
-        <article class="post-item" data-category="Básico">
-            <div class="post-date">31.01.2026</div>
-            <div class="post-content">
-                <span class="tag-blue">Básico</span>
-                <h2><a href="src/pages/posts-rust/rust-variables.html">Variáveis</a></h2>
-                <p class="post-description">Este artigo detalha como variáveis operam na memória e no processamento, diferenciando o uso da Stack e da Heap para tipos de dados distintos.</p>
-            </div>
-        </article>
+  </nav>
 
-        <article class="post-item" data-category="Básico">
-            <div class="post-date">31.01.2026</div>
-            <div class="post-content">
-                <span class="tag-blue">Básico</span>
-                <h2><a href="src/pages/posts-rust/rust-memoria.html">Memória</a></h2>
-                <p class="post-description">Esse pequeno artigo tem o objetivo de explicar um pouco sobre o layout de uma memória de forma dinâmica e fácil.</p>
-            </div>
-        </article>
+  <main class="content-section" id="content">
+    <article class="post-item" data-category="Básico">
+      <div class="post-date">31.01.2026</div>
+      <div class="post-content">
+        <span class="tag-blue">Básico</span>
+        <h2><a href="src/pages/posts-rust/rust-variables.html">Variáveis</a></h2>
+        <p class="post-description">Este artigo detalha como variáveis operam na memória e no processamento,
+          diferenciando o uso da Stack e da Heap para tipos de dados distintos.</p>
+      </div>
+    </article>
 
-        <!--
+    <article class="post-item" data-category="Básico">
+      <div class="post-date">31.01.2026</div>
+      <div class="post-content">
+        <span class="tag-blue">Básico</span>
+        <h2><a href="src/pages/posts-rust/rust-memoria.html">Memória</a></h2>
+        <p class="post-description">Esse pequeno artigo tem o objetivo de explicar um pouco sobre o layout de uma
+          memória de forma dinâmica e fácil.</p>
+      </div>
+    </article>
+
+    <!--
         <article class="post-item" data-category="Básico">
             <div class="post-date">15.02.2026</div>
             <div class="post-content">
@@ -78,16 +86,17 @@
             </div>
         </article>
         -->
-        
-    </main>
 
-    <footer>
-        <p>&copy; 2026 Nilton F. O. Júnior.</p>
-    </footer>
+  </main>
 
-    <script src="src/js/script.js" defer></script>
-    
-</body>         
+  <footer>
+    <p>&copy; 2026 Nilton F. O. Júnior.</p>
+  </footer>
+
+  <script src="src/js/script.js" defer></script>
+
+</body>
+
 </html>
 
 <!--

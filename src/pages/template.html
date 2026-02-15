@@ -4,66 +4,318 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nilton F. O. Júnior | Artigos</title>
+  <meta name="description" content="Guia completo sobre variáveis em Rust: entenda memória, tipos de dados e conceitos fundamentais">
+  <meta name="keywords" content="Rust, programação, variáveis, memória, tipos de dados">
+  <meta name="author" content="Nilton F. O. Júnior">
+  
+  <title>Nilton F. O. Júnior | Rust - Variáveis</title>
 
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="../css/template.css">
+  <link rel="stylesheet" href="/src/css/main.css">
+  <link rel="stylesheet" href="/src/css/template.css">
 </head>
 
 <body>
+  <header>
 
-  <article class="container">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb">
+        <li><a href="/index.html">Início</a></li>
+        <li aria-current="page">Variáveis</li>
+      </ol>
+    </nav>
 
-     <div class="home-icon">
-        <a href="/index.html" target="_blank" rel="noopener noreferrer" aria-label="Página Principal">
-        <img src="/src/assets/images/icons/home-icon.svg" alt="" width="32" height="32">
-        </a>
-      </div>
+    <time class="article-date" datetime="2026-03-28">28 Março | 2026</time>
+    <h1>Template</h1>
+    <p class="article-summary">Entenda como o computador armazena informações, o papel das variáveis na memória e os diferentes tipos de dados em Rust</p>
 
-      <p class="article-date">01 Janeiro | 2026</p>
-      <h1>Título do Artigo</h1>
-      <p class="article-summary">Este é um pequeno resumo do texto em itálico para introduzir o leitor ao assunto
-        abordado.</p>
-    </header>
+  </header>
 
-    <section class="article-content">
+  <main>
 
-      <p>Este é o início do desenvolvimento textual. Todo o conteúdo está alinhado à esquerda para facilitar a leitura e
-        utiliza a unidade relativa rem.</p>
+    <article class="article-content">
 
-      <figure class="article-image">
-        <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-02.png"
-          alt="Dados em gavetas sequenciais">
-        <figcaption>Organização ideal: dados em endereços vizinhos.
-          <br>
-          <small><strong>Fonte:</strong> Próprio Autor</small>
-        </figcaption>
-      </figure>
+      <section>
+        <h2>Introdução</h2>
+        <p>Para entender variáveis em Rust, precisamos primeiro compreender como o computador funciona. De forma simplificada, um computador tem dois componentes essenciais:</p>
 
-      <p>Abaixo, um exemplo de bloco de código com a funcionalidade de copiar:</p>
+        <dl>
+          <dt><strong>Memória</strong></dt>
+          <dd>Funciona como uma "gaveta" onde armazenamos informações, sejam elas números, textos ou imagens</dd>
+          
+          <dt><strong>Processamento</strong></dt>
+          <dd>É o "cérebro" que realiza cálculos e manipula os dados guardados na memória para gerar um resultado</dd>
+        </dl>
+      </section>
 
-      <div class="code-container">
-        <div class="code-header">
-          <span>Python</span>
-          <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+      <section>
+        <h2>O Sistema Binário</h2>
+
+        <p>Como o computador é uma máquina eletrônica, ele se comunica através de sinais elétricos: a presença ou a ausência de corrente.</p>
+
+        <p>Para traduzir isso para o mundo lógico, utilizamos o <strong>sistema binário</strong>, composto por apenas dois dígitos: <code>0</code> (desligado) e <code>1</code> (ligado).</p>
+
+        <p>Cada um desses dígitos é chamado de <strong>bit</strong> (a menor unidade de informação). Combinando esses bits, o computador consegue representar números maiores e instruções complexas:</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span>Binário</span>
+            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
+          </div>
+          <pre><code>Número 0: 0
+Número 1: 1
+Número 2: 10
+Número 3: 11
+Número 4: 100
+Número 5: 101</code></pre>
         </div>
 
-        <pre><code><span class="keyword">def</span> <span class="function">soma</span>(a, b):
-            <span class="keyword">return</span> a + b
+        <h3>De Bits a Bytes</h3>
 
-            <span class="comment"># Exemplo de uso</span>
-            <span class="function">print</span>(<span class="string">"Olá, mundo!"</span>)
-            resultado = <span class="function">soma</span>(5, 3)
-            <span class="function">print</span>(f<span class="string">"Resultado: {resultado}"</span>)</code></pre>
+        <p>A unidade básica é o Bit, mas para representar informações mais complexas, combinamos <strong>8 bits</strong> para formar um <strong>Byte</strong>.</p>
 
-      </div>
+        <p>Imagine um Byte como uma sequência de 8 interruptores. Se todos estiverem desligados (<code>00000000</code>), temos o número 0. Se apenas o último estiver ligado (<code>00000001</code>), temos o número 1. A maior combinação possível é quando todos os 8 bits estão ligados (<code>11111111</code>), o que representa o número 255.</p>
 
-      <p>O template agora utiliza as variáveis CSS definidas, possui um tema dark consistente, melhor responsividade e
-        transições suaves nos elementos interativos.</p>
+        <!-- Tabela de conversão -->
+        <table>
+          <caption>Tabela de Conversão: Binário para Decimal</caption>
+          <thead>
+            <tr>
+              <th scope="col">Binário (8 bits)</th>
+              <th scope="col">Decimal</th>
+              <th scope="col">Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>00000000</code></td>
+              <td>0</td>
+              <td>Todos os bits desligados</td>
+            </tr>
+            <tr>
+              <td><code>00000001</code></td>
+              <td>1</td>
+              <td>Apenas o último bit ligado</td>
+            </tr>
+            <tr>
+              <td><code>00001111</code></td>
+              <td>15</td>
+              <td>Quatro bits ligados</td>
+            </tr>
+            <tr>
+              <td><code>11111111</code></td>
+              <td>255</td>
+              <td>Todos os bits ligados (valor máximo)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-    </section>
-  </article>
+      <section>
+        <h2>O Conceito de Variáveis</h2>
+
+        <p>De forma simples, uma variável é um espaço reservado na memória para armazenar valores. Como o próprio nome diz, o conteúdo desse espaço pode <em>"variar"</em> ao longo do tempo, mas o <em>"rótulo"</em> que damos a ele permanece o mesmo.</p>
+
+        <h3>Analogia do Armário</h3>
+
+        <p>Para entender como isso funciona na prática, imagine a memória do computador como um grande armário cheio de gavetas. Inicialmente, essas gavetas estão vazias e não possuem nenhuma etiqueta.</p>
+
+        <figure class="article-image">
+          <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-01.png" 
+               alt="Ilustração de um armário com 16 gavetas vazias sem etiquetas"
+               loading="lazy">
+          <figcaption>
+            Representação da memória inicial vazia.
+            <br>
+            <small><strong>Fonte:</strong> Próprio Autor</small>
+          </figcaption>
+        </figure>
+
+        <p>Se você decidir guardar três informações diferentes, sua tendência natural seria colocá-las em gavetas sequenciais (uma ao lado da outra) para manter a organização.</p>
+
+        <figure class="article-image">
+          <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-02.png"
+               alt="Armário com três gavetas sequenciais preenchidas com dados"
+               loading="lazy">
+          <figcaption>
+            Organização ideal: dados em endereços vizinhos.
+            <br>
+            <small><strong>Fonte:</strong> Próprio Autor</small>
+          </figcaption>
+        </figure>
+
+        <p>No entanto, o computador nem sempre consegue fazer isso. Como muitos programas rodam ao mesmo tempo, as gavetas vizinhas podem já estar ocupadas. Por isso, os dados acabam ficando espalhados em lugares distintos do "armário".</p>
+
+        <figure class="article-image">
+          <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-03.png" 
+               alt="Armário com dados espalhados em gavetas não sequenciais"
+               loading="lazy">
+          <figcaption>
+            Memória fragmentada: dados ocupando espaços disponíveis aleatórios.
+            <br>
+            <small><strong>Fonte:</strong> Próprio Autor</small>
+          </figcaption>
+        </figure>
+
+        <aside class="note">
+          <p><strong>💡 Observação:</strong> Agora, imagine que em vez de 16 gavetas, tivéssemos 45 ou até milhões delas. Ficaria impossível lembrar de cabeça onde cada dado foi guardado, certo?</p>
+        </aside>
+
+        <figure class="article-image">
+          <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-04.png"
+               alt="Representação visual de um grande armário com múltiplas gavetas"
+               loading="lazy">
+          <figcaption>
+            O desafio de gerenciar grandes volumes de dados.
+            <br>
+            <small><strong>Fonte:</strong> Próprio Autor</small>
+          </figcaption>
+        </figure>
+
+        <h3>Endereçamento de Memória</h3>
+
+        <p>Para resolver esse caos, a memória utiliza <strong>endereços</strong>. Cada gaveta possui um código único e exclusivo. Assim, o computador não apenas guarda a informação, mas registra exatamente em qual "<strong>endereço</strong>" ela foi colocada para poder buscá-la depois.</p>
+
+        <figure class="article-image">
+          <img src="../../assets/images/posts-rust/variaveis/rust-variaveis-img-05.png" 
+               alt="Armário com gavetas identificadas por endereços hexadecimais"
+               loading="lazy">
+          <figcaption>
+            Endereços únicos identificando cada posição na memória.
+            <br>
+            <small><strong>Fonte:</strong> Próprio Autor</small>
+          </figcaption>
+        </figure>
+
+        <p>Um detalhe crucial: na memória, cada gaveta suporta exatamente <strong>1 Byte</strong>. Se a informação que você quer guardar for pequena, ela ocupa uma gaveta. Mas, se a informação for grande (como uma foto ou um texto longo), o sistema a divide em pedaços e ocupa duas, três ou quantas gavetas forem necessárias para armazenar o dado completo.</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span>Estrutura de um Dado na Memória</span>
+            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
+          </div>
+          <pre><code>1 Byte = [00000000]
+Endereço = 0xCB20
+[00000000] + 0xCB20 = Dado</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h2>Tipos de Dados</h2>
+
+        <p>Essa analogia do armário ajuda a entender como a memória organiza a informação. Na prática, o resultado desse armazenamento é o que chamamos de dado. Para facilitar a manipulação desses dados, nós os classificamos em três tipos principais:</p>
+
+        <ol>
+          <li><strong>Escalares (ou Primitivos):</strong> um valor único e simples. Exemplos incluem:
+            <ul>
+              <li><code>int</code> - números inteiros</li>
+              <li><code>float</code> - números decimais</li>
+              <li><code>bool</code> - verdadeiro ou falso</li>
+              <li><code>char</code> - um único caractere</li>
+            </ul>
+          </li>
+          
+          <li>Compostos (ou Estruturados): coleções que agrupam vários dados em uma única estrutura:
+            <ul>
+              <li><code>Arrays</code> - listas de tamanho fixo</li>
+              <li><code>Tuplas</code> - agrupamentos de tipos diferentes</li>
+              <li><code>Structs</code> - estruturas personalizadas</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h3>Comparação de Tipos Primitivos em Rust</h3>
+        
+        <table>
+          <caption>Principais Tipos de Dados Escalares</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tipo</th>
+              <th scope="col">Tamanho</th>
+              <th scope="col">Intervalo</th>
+              <th scope="col">Exemplo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>i8</code></td>
+              <td>8 bits</td>
+              <td>-128 a 127</td>
+              <td><code>let x: i8 = -42;</code></td>
+            </tr>
+            <tr>
+              <td><code>u8</code></td>
+              <td>8 bits</td>
+              <td>0 a 255</td>
+              <td><code>let x: u8 = 255;</code></td>
+            </tr>
+            <tr>
+              <td><code>i32</code></td>
+              <td>32 bits</td>
+              <td>-2³¹ a 2³¹-1</td>
+              <td><code>let x: i32 = 1000;</code></td>
+            </tr>
+            <tr>
+              <td><code>f64</code></td>
+              <td>64 bits</td>
+              <td>±1.7E-308 a ±1.7E+308</td>
+              <td><code>let x: f64 = 3.14;</code></td>
+            </tr>
+            <tr>
+              <td><code>bool</code></td>
+              <td>8 bits</td>
+              <td>true ou false</td>
+              <td><code>let x: bool = true;</code></td>
+            </tr>
+            <tr>
+              <td><code>char</code></td>
+              <td>32 bits</td>
+              <td>Unicode</td>
+              <td><code>let x: char = 'A';</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Declarando Variáveis em Rust</h3>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span>Rust</span>
+            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
+          </div>
+          <pre><code>// Variável imutável (padrão em Rust)
+let nome = "Nilton";
+
+// Variável mutável (pode ser alterada)
+let mut idade = 25;
+idade = 26; // Ok
+
+// Com tipo explícito
+let altura: f64 = 1.75;
+
+// Constante (sempre imutável)
+const MAX_PONTOS: u32 = 100_000;</code></pre>
+        </div>
+
+        <aside class="warning">
+          <h4>⚠️ Importante sobre Mutabilidade</h4>
+          <p>Por padrão, todas as variáveis em Rust são <strong>imutáveis</strong>. Isso é uma escolha de design da linguagem para aumentar a segurança e evitar bugs. Para tornar uma variável mutável, você deve usar explicitamente a palavra-chave <code>mut</code>.</p>
+        </aside>
+      </section>
+
+      <p>Caso queira continuar estudando e aprender mais sobre outros conteúdos, <a href="/index.html">segue o link</a>. Bons estudos!</p>
+
+      <blockquote class="quote">
+        <p>"<em>A beleza que vive no ato de compartilhar algo com o outro.</em>" — <cite>Monja Coen</cite></p>
+      </blockquote>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Nilton F. O. Júnior</p>
+  </footer>
 
   <script src="../js/template.js" defer></script>
 

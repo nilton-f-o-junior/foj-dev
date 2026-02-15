@@ -46,9 +46,11 @@
   --text-primary: var(--overlay2);
   --text-secondary: var(--white);
   --text-tertiary: var(--text);
+  --text-quaternary: var(--black);
 
   --text-primary-template: var(--text);
   --text-secondary-template: var(--subtext1);
+  --text-tertiary-template: var(--blue);
 
   --color-details: var(--flamingo);
   --color-border: var(--surface0);

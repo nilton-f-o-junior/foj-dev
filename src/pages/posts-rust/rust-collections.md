@@ -36,7 +36,7 @@ Antes de começar, vou definir alguns conceitos comuns e importantes:
 
 Conceitos importantes definidos, vamos começar entender cada um dos tipos de coleção.
 
-## Vetor
+## Vec<T>
 
 Pode aumentar ou diminuir de tamanho, conforme a entrada e saida de dados, os dados podem ser inseridos ou removidos de qualquer posição do vetor.
 
@@ -64,17 +64,116 @@ fn main () {
     let mut stack_str: Vec<&str> = vec!["a", "b", "c"];
     println!("Stack = {:#?}", stack_str);
 
-    // inserindo dados
+    // push() - inserindo dados
     stack_str.push("D");
     println!("Stack = {:#?}", stack_str);
 
-    // remover dados
+    // pop() - remover dados
     stack_str.pop();
     println!("Stack = {:#?}", stack_str);
 
-    // último item
+    // last() - último item
     println!("Stack = {:#?}", stack_str.last());
 }
 ```
 
-# VecDeque
+# VecDeque<T>
+
+É um vetor excelente quando você precisa manipular elementos nos dois extremos da coleções com frenquênciam, funciona como uma fila dupla (double-ended queue) significa que você pode adicionar e remover elementos tanto no início quanto no final de forma eficiente. 
+
+```rust
+use std::collections::VecDeque;
+
+fn main() {
+    let mut vecdeque: VecDeque<i32> = VecDeque::new();
+
+    // push_back() - inserindo dados no final
+    vecdeque.push_back(10);
+    vecdeque.push_back(20);
+
+    // push_front() - inserindo dados inicio
+    vecdeque.push_front(5);
+
+    // [5, 10, 20]
+    println!("VecDeque: {:?}", vecdeque);
+
+    // pop_front() - removendo do início
+    let primeiro = vecdeque.pop_front();
+    println!("Removido do início: {:?}", primeiro); // Some(5)
+
+    // pop_back() - removendo do fim
+    let ultimo = vecdeque.pop_back();
+    println!("Removido do fim: {:?}", ultimo); // Some(20)
+
+    //
+    println!("Restou apenas: {:?}", vecdeque); // [10]
+}
+```
+
+# HashMap<K, V>
+
+```rust
+use std::collections::HashMap;
+
+fn main() {
+    let mut config: HashMap<&str, &str> = HashMap::new();
+
+    // insert - inseridos dados
+    config.insert("tema", "escuro");
+    println!("Tema: {:?}", config.get("tema"));
+
+    // entry - só será inseridos dados se a chave tiver vazia
+    config.entry("idioma").or_insert("português");
+    println!("Idioma: {:?}", config.get("idioma"));
+
+    // "tema" já é "escuro", ele vai ignorar o "claro"
+    config.entry("tema").or_insert("claro");
+    println!("Tema: {:?}", config.get("tema"));
+
+    //
+    println!("Configurações atuais:");
+    println!("Tema: {:?}", config.get("tema"));
+    println!("Idioma: {:?}", config.get("idioma"));
+}
+```
+
+## HashSet<T>
+
+Quando você entende bem o conceito de chave e valor, fica fácil entender Hashset, aqui só existe apenas o valor e ele não pode se repetir. Imagina um sistema em que você tem uma lista de CPFs de diversos usuários, o CPF de 2 usuários não pode ser igual.
+
+```rust
+use std::collections::HashSet;
+
+fn main() {
+    // criando um HashSet de Strings
+    let mut nomes: HashSet<&str> = HashSet::new();
+
+    // adicionando nomes
+    nomes.insert("Alice");
+    nomes.insert("Bruno");
+    nomes.insert("Carla");
+    println!("{:#?}", nomes);
+        
+    let adicionando_novamente = nomes.insert("Alice");
+    println!("Conseguiu adicionar 'Alice'? {}", adicionando_novamente);
+
+    // removendo alguém
+    nomes.remove("Bruno");
+
+    // contem na lista
+    println!("Existe 'Carla' na lista? {}", nomes.contains("Carla"));
+}
+```
+
+Até aqui está bem fácil né? Se tem algo que gostaria de deixar claro é que: esse texto é para conversar um pouco sobre collections de forma mais acessível e não trabalhando detalhadamente cada ponto de cada um dos itens, buscando colocar exemplos fáceis de entender e que qualquer pessoa possa visualizar e não se perde. Caso deseje visualizar melhor e mais detalhadamente na prática cada um dos itens, recomendo ler o livro, além de diversos exemplos, conta também com questões para exercitar o conhecimento.
+
+### Tabela
+
+| Estrutura          | Inserção/Remoção         | Observação             |
+|--------------------|--------------------------|------------------------|
+| Vec<T>             | O(1) no final            | O(n) ao redimensionar  |
+| Vec<T> como Stack  | O(1) no final            | O(n) ao redimensionar  | 
+| VecDeque<T>        | O(1) nos dois extremos   | O(n) ao redimensionar  |
+|--------------------|--------------------------|------------------------|
+
+

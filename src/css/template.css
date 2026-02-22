@@ -14,8 +14,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 2rem);
-  margin: 2rem;
-  padding: 2rem;
+  margin: 1rem;
+  padding: 1rem;
   border-radius: 8px 8px 0 0;
   color: var(--text-primary-template);
   font-family: var(--font-main);

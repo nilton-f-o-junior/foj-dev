@@ -223,6 +223,16 @@ header {
   background: var(--color-tag-blue);
 }
 
+.tag-peach {
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  background: var(--color-tag-peach);
+}
+
 .post-description {
   max-width: 600px;
   color: var(--text-tertiary);

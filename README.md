@@ -6,10 +6,7 @@
 
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Atualiza%C3%A7%C3%A3o-23%2F02%2F26-cba6f7" alt="Próxima Atualização">
-  </a>
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/Licen%C3%A7a-MIT-yellow.svg" alt="Licença">
+    <img src="https://img.shields.io/badge/Atualizado-31%2F03%2F26-cba6f7">
   </a>
 </p>
 
@@ -29,7 +26,7 @@ Acesse: https://foj-dev.vercel.app/
 Os artigos são organizados por níveis de dificuldade para facilitar sua jornada de aprendizado:
 
 - 🟢 **Básico** - Para quem está começando;
-- 🟡 **Médio** - Para quem já tem alguma experiência;
+- 🟡 **Intermediário** - Para quem já tem alguma experiência;
 - 🔴 **Avançado** - Para quem busca se aprofundar.
 
 ## 📚 Conteúdos Abordados

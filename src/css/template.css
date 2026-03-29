@@ -94,6 +94,7 @@ h1 {
 
 main {
   max-width: 1200px;
+  width: 100%;
   display: flex;
   margin: 0 auto;
   padding: 32px 0;
@@ -101,6 +102,7 @@ main {
 
 .article-content {
   flex: 1;
+  min-width: 0;
   max-width: 800px;
   color: var(--text-primary-template);
 }
@@ -241,8 +243,15 @@ dd {
   line-height: 1.6;
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 table {
   width: 100%;
+  min-width: 500px;
   margin: 32px 0;
   border-collapse: collapse;
   border-radius: 8px;
@@ -329,7 +338,7 @@ td code {
   margin: 30px 0;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  overflow: hidden;
+  overflow: visible;
   color: var(--text-primary-template);
   background: var(--bg-code);
   transition: box-shadow 0.3s ease;
@@ -387,6 +396,15 @@ pre {
   padding: 20px;
   overflow-x: auto;
   font-size: 0.9rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 0 0 8px 8px;
+}
+
+pre code {
+  display: block;
+  width: max-content;
+  min-width: 100%;
 }
 
 pre::-webkit-scrollbar {
@@ -409,7 +427,7 @@ pre::-webkit-scrollbar-thumb:hover {
 code {
   color: var(--text-primary-template);
   font-family: var(--font-main);
-  display: inline-block;
+  display: inline;
 }
 
 .keyword {
@@ -569,7 +587,7 @@ footer {
 
 @media (max-width: 480px) {
   body {
-    margin: 0.5rem;
+    margin: 1rem;
     padding: 1rem;
   }
 

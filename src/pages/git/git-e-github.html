@@ -1,120 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guia completo sobre Git e GitHub: controle de versão, comandos essenciais e padronização de commits"
+    />
+    <meta
+      name="keywords"
+      content="Git, GitHub, controle de versão, commits, branches, SSH"
+    />
+    <meta name="author" content="Nilton F. O. Júnior" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Guia completo sobre Git e GitHub: controle de versão, comandos essenciais e padronização de commits">
-  <meta name="keywords" content="Git, GitHub, controle de versão, commits, branches, SSH">
-  <meta name="author" content="Nilton F. O. Júnior">
-  
-  <title>Nilton F. O. Júnior | Git e GitHub</title>
+    <title>Nilton F. O. Júnior | Git e GitHub</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="/src/css/template.css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/template.css" />
+  </head>
 
-<body>
-  <header>
+  <body>
+    <header>
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/index.html">Início</a></li>
+        </ol>
+      </nav>
 
-    <nav aria-label="Breadcrumb">
-      <ol class="breadcrumb">
-        <li><a href="/index.html">Início</a></li>
-        <li aria-current="page">Git e GitHub</li>
-      </ol>
-    </nav>
+      <time class="article-date" datetime="2026-03-31">31 Março | 2026</time>
+      <h1>Git e GitHub</h1>
+      <p class="article-summary">
+        Entenda controle de versão, configure seu ambiente, domine os comandos
+        essenciais e aprenda a padronizar seus commits com Conventional Commits
+      </p>
+    </header>
 
-    <time class="article-date" datetime="2026-03-31">31 Março | 2026</time>
-    <h1>Git e GitHub</h1>
-    <p class="article-summary">Entenda controle de versão, configure seu ambiente, domine os comandos essenciais e aprenda a padronizar seus commits com Conventional Commits</p>
+    <main>
+      <article class="article-content">
+        <section>
+          <h2>Introdução</h2>
+          <p>
+            Antes de escrever qualquer comando, é importante entender a
+            diferença entre as duas ferramentas que usaremos ao longo deste
+            guia:
+          </p>
 
-  </header>
+          <dl>
+            <dt><strong>Git</strong></dt>
+            <dd>
+              Sistema de controle de versão para monitorar alterações no código
+              localmente
+            </dd>
 
-  <main>
+            <dt><strong>GitHub</strong></dt>
+            <dd>
+              Plataforma na nuvem que hospeda repositórios e facilita a
+              colaboração entre múltiplos desenvolvedores
+            </dd>
+          </dl>
+        </section>
 
-    <article class="article-content">
+        <section>
+          <h2>Conceitos Básicos</h2>
 
-      <section>
-        <h2>Introdução</h2>
-        <p>Antes de escrever qualquer comando, é importante entender a diferença entre as duas ferramentas que usaremos ao longo deste guia:</p>
+          <p>
+            Dois conceitos são centrais para entender por que o Git existe e por
+            que ele é tão valioso no desenvolvimento de software:
+          </p>
 
-        <dl>
-          <dt><strong>Git</strong></dt>
-          <dd>Sistema de controle de versão para monitorar alterações no código localmente</dd>
+          <dl>
+            <dt><strong>Versionamento</strong></dt>
+            <dd>
+              Prática de gerenciar diferentes estágios de um projeto, permitindo
+              recuperar versões anteriores e evitar perda de dados
+            </dd>
 
-          <dt><strong>GitHub</strong></dt>
-          <dd>Plataforma na nuvem que hospeda repositórios e facilita a colaboração entre múltiplos desenvolvedores</dd>
-        </dl>
-      </section>
+            <dt><strong>Controle de versão</strong></dt>
+            <dd>
+              Cria um histórico detalhado que identifica quem alterou o quê e
+              quando, garantindo a integridade do código-fonte
+            </dd>
+          </dl>
+        </section>
 
-      <section>
-        <h2>Conceitos Básicos</h2>
+        <section>
+          <h2>Instalação</h2>
 
-        <p>Dois conceitos são centrais para entender por que o Git existe e por que ele é tão valioso no desenvolvimento de software:</p>
+          <h3>Debian / Ubuntu</h3>
 
-        <dl>
-          <dt><strong>Versionamento</strong></dt>
-          <dd>Prática de gerenciar diferentes estágios de um projeto, permitindo recuperar versões anteriores e evitar perda de dados</dd>
-
-          <dt><strong>Controle de versão</strong></dt>
-          <dd>Cria um histórico detalhado que identifica quem alterou o quê e quando, garantindo a integridade do código-fonte</dd>
-        </dl>
-      </section>
-
-      <section>
-        <h2>Instalação</h2>
-
-        <h3>Debian / Ubuntu</h3>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Bash</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
+          <div class="code-container">
+            <div class="code-header">
+              <span>Bash</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>sudo apt-get install git</code></pre>
           </div>
-          <pre><code>sudo apt-get install git</code></pre>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <h2>Configuração</h2>
+        <section>
+          <h2>Configuração</h2>
 
-        <h3>Usuário único</h3>
+          <h3>Usuário único</h3>
 
-        <div class="code-container">
-          <div class="code-header">
-            <span>Bash</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
-          </div>
-          <pre><code># Usuário
+          <div class="code-container">
+            <div class="code-header">
+              <span>Bash</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Usuário
 git config --global user.name "Seu Nome"
 
 # E-mail
-git config --global user.email "seu@email.com"
+git config --global user.email "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c2f39291c39313d3530723f3331">[email&#160;protected]</a>"
 
 # Gerar chave SSH
-ssh-keygen -t ed25519 -C "seu@email.com"
+ssh-keygen -t ed25519 -C "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e1928494a1848c80888dcf828e8c">[email&#160;protected]</a>"
 # Pressione Enter nas perguntas para usar os valores padrão
 
 # Exibir a chave pública para copiar e colar no GitHub
 cat ~/.ssh/id_ed25519.pub
 
 # GitHub > Settings > SSH and GPG keys > New SSH key > Cole e salve</code></pre>
-        </div>
-
-        <h3>Múltiplos usuários (pessoal + trabalho)</h3>
-
-        <p>Quando se utiliza o mesmo computador para projetos pessoais e profissionais, é necessário configurar identidades SSH separadas para cada conta GitHub.</p>
-
-        <p><strong>1. Gerar as chaves SSH</strong></p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Bash — Conta pessoal</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>ssh-keygen -t ed25519 -C "pessoal@email.com"
+
+          <h3>Múltiplos usuários (pessoal + trabalho)</h3>
+
+          <p>
+            Quando se utiliza o mesmo computador para projetos pessoais e
+            profissionais, é necessário configurar identidades SSH separadas
+            para cada conta GitHub.
+          </p>
+
+          <p><strong>1. Gerar as chaves SSH</strong></p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Bash — Conta pessoal</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>ssh-keygen -t ed25519 -C "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cdbda8bebea2aca18da8a0aca4a1e3aea2a0">[email&#160;protected]</a>"
 # Quando solicitado o arquivo, digite: id_pessoal
 
 # Generate public/private ed25519 key pair.
@@ -122,14 +168,20 @@ cat ~/.ssh/id_ed25519.pub
 # Enter passphrase (empty for no passphrase):
 
 # Pressione Enter para deixar a passphrase em branco (ou defina uma)</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Bash — Conta de trabalho</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>ssh-keygen -t ed25519 -C "trabalho@email.com"
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Bash — Conta de trabalho</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>ssh-keygen -t ed25519 -C "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4c0c6d5d6d5d8dcdbf4d1d9d5ddd89ad7dbd9">[email&#160;protected]</a>"
 # Quando solicitado o arquivo, digite: id_trabalho
 
 # Generate public/private ed25519 key pair.
@@ -137,16 +189,22 @@ cat ~/.ssh/id_ed25519.pub
 # Enter passphrase (empty for no passphrase):
 
 # Pressione Enter para deixar a passphrase em branco (ou defina uma)</code></pre>
-        </div>
-
-        <p><strong>2. Adicionar as chaves ao SSH agent</strong></p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Bash</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>eval "$(ssh-agent -s)"
+
+          <p><strong>2. Adicionar as chaves ao SSH agent</strong></p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Bash</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>eval "$(ssh-agent -s)"
 # Agent pid XXXX
 
 ssh-add ~/.ssh/id_pessoal
@@ -154,32 +212,44 @@ ssh-add ~/.ssh/id_pessoal
 
 ssh-add ~/.ssh/id_trabalho
 # Identity added: id_trabalho</code></pre>
-        </div>
-
-        <p><strong>3. Adicionar as chaves públicas ao GitHub</strong></p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Bash</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Copie cada chave e adicione em:
+
+          <p><strong>3. Adicionar as chaves públicas ao GitHub</strong></p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Bash</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Copie cada chave e adicione em:
 # GitHub > Settings > SSH and GPG keys > New SSH key > Cole e salve
 
 cat ~/.ssh/id_pessoal.pub
 cat ~/.ssh/id_trabalho.pub</code></pre>
-        </div>
-
-        <p><strong>4. Criar o arquivo de configuração SSH</strong></p>
-
-        <p>Crie ou edite o arquivo <code>~/.ssh/config</code>:</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>~/.ssh/config</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Conta pessoal
+
+          <p><strong>4. Criar o arquivo de configuração SSH</strong></p>
+
+          <p>Crie ou edite o arquivo <code>~/.ssh/config</code>:</p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>~/.ssh/config</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Conta pessoal
 Host github.com-pessoal
     HostName github.com
     User git
@@ -190,71 +260,115 @@ Host github.com-trabalho
     HostName github.com
     User git
     IdentityFile ~/.ssh/id_trabalho</code></pre>
-        </div>
-
-        <p><strong>5. Testar as conexões</strong></p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Bash</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>ssh -T git@github.com-pessoal
+
+          <p><strong>5. Testar as conexões</strong></p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Bash</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>ssh -T <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="284f415c684f415c405d4a064b474505584d5b5b474944">[email&#160;protected]</a>
 # Hi &lt;usuario-pessoal&gt;! You've successfully authenticated...
 
-ssh -T git@github.com-trabalho
+ssh -T <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="20474954604749544855420e434f4d0d54524142414c484f">[email&#160;protected]</a>
 # Hi &lt;usuario-trabalho&gt;! You've successfully authenticated...</code></pre>
-        </div>
-
-        <p><strong>6. Clonar repositórios usando o host correto</strong></p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Bash</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>git clone git@github.com-pessoal:usuario-pessoal/repositorio.git
-git clone git@github.com-trabalho:usuario-trabalho/repositorio.git</code></pre>
-        </div>
-      </section>
 
-      <section>
-        <h2>Criando um Repositório</h2>
+          <p><strong>6. Clonar repositórios usando o host correto</strong></p>
 
-        <p>Para criar um novo repositório no GitHub, acesse <strong>Repositories &gt; New</strong> e preencha as opções abaixo:</p>
-
-        <dl>
-          <dt><strong>Repository name</strong></dt>
-          <dd>Nome simples e direto (ex: <code>meu-projeto</code>, <code>my-project</code>)</dd>
-
-          <dt><strong>Description</strong></dt>
-          <dd>Breve descrição do projeto (opcional, mas recomendado)</dd>
-
-          <dt><strong>Visibility</strong></dt>
-          <dd><em>Public</em> (recomendado) ou <em>Private</em></dd>
-
-          <dt><strong>Add a README file</strong></dt>
-          <dd>Apresenta o projeto na página inicial (recomendado)</dd>
-
-          <dt><strong>Add .gitignore</strong></dt>
-          <dd>Escolha o template da linguagem do projeto. Gerador: <a href="https://www.toptal.com/developers/gitignore" target="_blank" rel="noopener">toptal.com/developers/gitignore</a></dd>
-
-          <dt><strong>Choose a license</strong></dt>
-          <dd>Define como seu código pode ser usado por outros. Referência: <a href="https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository" target="_blank" rel="noopener">GitHub Docs — Licenças</a></dd>
-        </dl>
-      </section>
-
-      <section>
-        <h2>.gitignore</h2>
-
-        <p>O arquivo <code>.gitignore</code> instrui o Git a não rastrear determinados arquivos ou pastas, como dependências, variáveis de ambiente e arquivos gerados automaticamente.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>.gitignore</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
+          <div class="code-container">
+            <div class="code-header">
+              <span>Bash</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>git clone <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="43242a3703242a372b36216d202c2e6e332630302c222f">[email&#160;protected]</a>:usuario-pessoal/repositorio.git
+git clone <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="680f011c280f011c001d0a460b0705451c1a090a09040007">[email&#160;protected]</a>:usuario-trabalho/repositorio.git</code></pre>
           </div>
-          <pre><code># Ignorar uma pasta inteira (ex: dependências do Node)
+        </section>
+
+        <section>
+          <h2>Criando um Repositório</h2>
+
+          <p>
+            Para criar um novo repositório no GitHub, acesse
+            <strong>Repositories &gt; New</strong> e preencha as opções abaixo:
+          </p>
+
+          <dl>
+            <dt><strong>Repository name</strong></dt>
+            <dd>
+              Nome simples e direto (ex: <code>meu-projeto</code>,
+              <code>my-project</code>)
+            </dd>
+
+            <dt><strong>Description</strong></dt>
+            <dd>Breve descrição do projeto (opcional, mas recomendado)</dd>
+
+            <dt><strong>Visibility</strong></dt>
+            <dd><em>Public</em> (recomendado) ou <em>Private</em></dd>
+
+            <dt><strong>Add a README file</strong></dt>
+            <dd>Apresenta o projeto na página inicial (recomendado)</dd>
+
+            <dt><strong>Add .gitignore</strong></dt>
+            <dd>
+              Escolha o template da linguagem do projeto. Gerador:
+              <a
+                href="https://www.toptal.com/developers/gitignore"
+                target="_blank"
+                rel="noopener"
+                >toptal.com/developers/gitignore</a
+              >
+            </dd>
+
+            <dt><strong>Choose a license</strong></dt>
+            <dd>
+              Define como seu código pode ser usado por outros. Referência:
+              <a
+                href="https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository"
+                target="_blank"
+                rel="noopener"
+                >GitHub Docs — Licenças</a
+              >
+            </dd>
+          </dl>
+        </section>
+
+        <section>
+          <h2>.gitignore</h2>
+
+          <p>
+            O arquivo <code>.gitignore</code> instrui o Git a não rastrear
+            determinados arquivos ou pastas, como dependências, variáveis de
+            ambiente e arquivos gerados automaticamente.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>.gitignore</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Ignorar uma pasta inteira (ex: dependências do Node)
 node_modules/
 
 # Ignorar arquivos de configuração sensíveis (senhas)
@@ -269,79 +383,121 @@ Thumbs.db
 
 # "!" Abre a exceção para o arquivo específico
 !config_fixo.log</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>Comandos</h2>
-
-        <h3>Iniciando uma área de trabalho</h3>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git clone</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Clonar um repositório existente
+        </section>
+
+        <section>
+          <h2>Comandos</h2>
+
+          <h3>Iniciando uma área de trabalho</h3>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git clone</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Clonar um repositório existente
 git clone https://github.com/usuario/projeto.git</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git init</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Criar um repositório novo do zero
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git init</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Criar um repositório novo do zero
 git init meu-projeto</code></pre>
-        </div>
-
-        <h3>Trabalhando com mudanças</h3>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git add</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Adicionar arquivos para o próximo commit
+
+          <h3>Trabalhando com mudanças</h3>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git add</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Adicionar arquivos para o próximo commit
 git add index.html        # um arquivo específico
 git add .                 # todos os arquivos alterados</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git mv</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Mover ou renomear um arquivo
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git mv</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Mover ou renomear um arquivo
 git mv velho-nome.txt novo-nome.txt</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git restore</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Descartar alterações não commitadas
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git restore</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Descartar alterações não commitadas
 git restore arquivo.txt   # desfaz mudanças no arquivo</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git rm</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Remover um arquivo do projeto e do índice
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git rm</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Remover um arquivo do projeto e do índice
 git rm arquivo.txt</code></pre>
-        </div>
-
-        <h3>Examinando histórico e estado</h3>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git bisect</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Encontrar qual commit introduziu um bug
+
+          <h3>Examinando histórico e estado</h3>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git bisect</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Encontrar qual commit introduziu um bug
 git bisect start
 
 git bisect bad            # commit atual tem o bug
@@ -349,244 +505,370 @@ git bisect good v1.0      # essa versão estava OK
 
 # O Git navega automaticamente; você testa e repete:
 git bisect good           # ou: git bisect bad</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git diff</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Ver o que mudou
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git diff</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Ver o que mudou
 git diff                  # mudanças ainda não adicionadas
 git diff HEAD~1           # comparar com o commit anterior</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git grep</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Buscar texto no código
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git grep</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Buscar texto no código
 git grep "função login"</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git log</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Ver histórico de commits
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git log</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Ver histórico de commits
 git log --oneline         # resumido, uma linha por commit</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git show</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Ver detalhes de um commit
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git show</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Ver detalhes de um commit
 git show a3f5c1b          # hash do commit</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git status</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Ver estado atual dos arquivos
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git status</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Ver estado atual dos arquivos
 git status</code></pre>
-        </div>
-
-        <h3>Gerenciando histórico e branches</h3>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git branch</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Criar ou listar branches
+
+          <h3>Gerenciando histórico e branches</h3>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git branch</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Criar ou listar branches
 git branch                # lista todas as branches
 git branch nova-feature   # cria uma branch nova</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git commit</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Salvar as mudanças no histórico
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git commit</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Salvar as mudanças no histórico
 git commit -m "Adiciona página de login"</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git merge</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Unir uma branch na atual
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git merge</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Unir uma branch na atual
 git merge nova-feature</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git rebase</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Reaplicar commits sobre outra base
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git rebase</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Reaplicar commits sobre outra base
 git rebase main           # reaplica commits em cima da main</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git reset</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Desfazer commits ou unstage arquivos
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git reset</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Desfazer commits ou unstage arquivos
 git reset HEAD~1          # desfaz o último commit (mantém arquivos)</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git switch</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Trocar de branch
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git switch</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Trocar de branch
 git switch nova-feature
 git switch -c outra-branch  # cria e já troca</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git tag</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Marcar uma versão
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git tag</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Marcar uma versão
 git tag v1.0.0</code></pre>
-        </div>
-
-        <h3>Colaborando</h3>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git fetch</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Baixar atualizações sem aplicar
+
+          <h3>Colaborando</h3>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git fetch</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Baixar atualizações sem aplicar
 git fetch origin</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git pull</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Baixar e já aplicar atualizações
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git pull</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Baixar e já aplicar atualizações
 git pull origin main</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git push</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code># Enviar commits para o repositório remoto
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git push</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code># Enviar commits para o repositório remoto
 git push origin main</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>Padronização de Commits</h2>
-
-        <h3>O que é Conventional Commits?</h3>
-
-        <p>É uma convenção leve para mensagens de commit que segue um formato estruturado. Facilita a leitura do histórico, a geração automática de changelogs e o versionamento semântico (SemVer).</p>
-
-        <p>Especificação oficial: <a href="https://www.conventionalcommits.org" target="_blank" rel="noopener">conventionalcommits.org</a></p>
-
-        <h3>Estrutura do Commit</h3>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Formato</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>&lt;tipo&gt;[escopo opcional]: &lt;descrição&gt;
+        </section>
+
+        <section>
+          <h2>Padronização de Commits</h2>
+
+          <h3>O que é Conventional Commits?</h3>
+
+          <p>
+            É uma convenção leve para mensagens de commit que segue um formato
+            estruturado. Facilita a leitura do histórico, a geração automática
+            de changelogs e o versionamento semântico (SemVer).
+          </p>
+
+          <p>
+            Especificação oficial:
+            <a
+              href="https://www.conventionalcommits.org"
+              target="_blank"
+              rel="noopener"
+              >conventionalcommits.org</a
+            >
+          </p>
+
+          <h3>Estrutura do Commit</h3>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Formato</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>&lt;tipo&gt;[escopo opcional]: &lt;descrição&gt;
 
 [corpo opcional]
 
 [rodapé(s) opcional(is)]</code></pre>
-        </div>
-
-        <aside class="note">
-          <p><strong>Regras gerais:</strong> A descrição deve estar em letras minúsculas, sem ponto final, usando o imperativo ("adiciona", não "adicionado"). A linha do cabeçalho deve ter no máximo <strong>72 caracteres</strong> e o corpo deve ser separado do cabeçalho por uma linha em branco.</p>
-        </aside>
-
-        <h3>Tipos Principais</h3>
-
-        <table>
-          <caption>Tipos do Conventional Commits</caption>
-          <thead>
-            <tr>
-              <th scope="col">Tipo</th>
-              <th scope="col">Quando usar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>feat</code></td>
-              <td>Nova funcionalidade</td>
-            </tr>
-            <tr>
-              <td><code>fix</code></td>
-              <td>Correção de bug</td>
-            </tr>
-            <tr>
-              <td><code>docs</code></td>
-              <td>Alterações apenas em documentação</td>
-            </tr>
-            <tr>
-              <td><code>style</code></td>
-              <td>Formatação, ponto e vírgula, espaços (sem mudança de lógica)</td>
-            </tr>
-            <tr>
-              <td><code>refactor</code></td>
-              <td>Refatoração de código (sem bug fix nem feature)</td>
-            </tr>
-            <tr>
-              <td><code>perf</code></td>
-              <td>Melhoria de performance</td>
-            </tr>
-            <tr>
-              <td><code>test</code></td>
-              <td>Adição ou correção de testes</td>
-            </tr>
-            <tr>
-              <td><code>build</code></td>
-              <td>Mudanças no sistema de build ou dependências externas</td>
-            </tr>
-            <tr>
-              <td><code>ci</code></td>
-              <td>Mudanças em arquivos e scripts de CI/CD</td>
-            </tr>
-            <tr>
-              <td><code>chore</code></td>
-              <td>Tarefas de manutenção que não alteram src ou testes</td>
-            </tr>
-            <tr>
-              <td><code>revert</code></td>
-              <td>Reverte um commit anterior</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <h3>Exemplos Práticos</h3>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Commits simples (sem escopo)</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>feat: adiciona autenticação via OAuth2
+
+          <aside class="note">
+            <p>
+              <strong>Regras gerais:</strong> A descrição deve estar em letras
+              minúsculas, sem ponto final, usando o imperativo ("adiciona", não
+              "adicionado"). A linha do cabeçalho deve ter no máximo
+              <strong>72 caracteres</strong> e o corpo deve ser separado do
+              cabeçalho por uma linha em branco.
+            </p>
+          </aside>
+
+          <h3>Tipos Principais</h3>
+
+          <div class="table-wrapper">
+            <table>
+              <caption>
+                Tipos do Conventional Commits
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Quando usar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>feat</code></td>
+                  <td>Nova funcionalidade</td>
+                </tr>
+                <tr>
+                  <td><code>fix</code></td>
+                  <td>Correção de bug</td>
+                </tr>
+                <tr>
+                  <td><code>docs</code></td>
+                  <td>Alterações apenas em documentação</td>
+                </tr>
+                <tr>
+                  <td><code>style</code></td>
+                  <td>
+                    Formatação, ponto e vírgula, espaços (sem mudança de lógica)
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>refactor</code></td>
+                  <td>Refatoração de código (sem bug fix nem feature)</td>
+                </tr>
+                <tr>
+                  <td><code>perf</code></td>
+                  <td>Melhoria de performance</td>
+                </tr>
+                <tr>
+                  <td><code>test</code></td>
+                  <td>Adição ou correção de testes</td>
+                </tr>
+                <tr>
+                  <td><code>build</code></td>
+                  <td>Mudanças no sistema de build ou dependências externas</td>
+                </tr>
+                <tr>
+                  <td><code>ci</code></td>
+                  <td>Mudanças em arquivos e scripts de CI/CD</td>
+                </tr>
+                <tr>
+                  <td><code>chore</code></td>
+                  <td>Tarefas de manutenção que não alteram src ou testes</td>
+                </tr>
+                <tr>
+                  <td><code>revert</code></td>
+                  <td>Reverte um commit anterior</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Exemplos Práticos</h3>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Commits simples (sem escopo)</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>feat: adiciona autenticação via OAuth2
 fix: corrige cálculo de desconto no carrinho
 docs: atualiza README com instruções de instalação
 style: aplica formatação do prettier nos arquivos ts
@@ -594,52 +876,76 @@ refactor: extrai lógica de validação para módulo separado
 perf: substitui loop por operação de batch no banco
 test: adiciona testes unitários para UserService
 chore: atualiza dependências para versões mais recentes</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Commits com escopo</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>feat(auth): adiciona suporte a login com Google
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Commits com escopo</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>feat(auth): adiciona suporte a login com Google
 fix(cart): corrige arredondamento de valores decimais
 docs(api): documenta endpoint de criação de pedidos
 test(payment): cobre cenários de falha na integração com Stripe
 refactor(database): migra queries para uso de ORM
 ci(github-actions): adiciona job de lint no pipeline de PR
 build(docker): otimiza imagem para reduzir tamanho final</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Commit com corpo</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>fix(auth): corrige expiração incorreta do token JWT
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Commit com corpo</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>fix(auth): corrige expiração incorreta do token JWT
 
 O token estava sendo gerado com timezone UTC+0 fixo,
 causando expiração antecipada para usuários em fusos
 negativos. Agora usa o timestamp do servidor corretamente.</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Breaking Change</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>feat(api)!: remove endpoint legado /v1/users
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Breaking Change</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>feat(api)!: remove endpoint legado /v1/users
 
 BREAKING CHANGE: O endpoint /v1/users foi removido.
 Migre para /v2/users que retorna o mesmo contrato
 com campos adicionais de paginação.</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Múltiplos rodapés</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>fix(billing): corrige cobrança duplicada em planos anuais
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Múltiplos rodapés</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>fix(billing): corrige cobrança duplicada em planos anuais
 
 Detectado em produção via alertas do Datadog. A cobrança
 ocorria duas vezes quando o webhook de confirmação do
@@ -647,110 +953,148 @@ gateway era recebido com delay superior a 30s.
 
 Closes #482
 Reviewed-by: Maria Silva
-Co-authored-by: João Souza &lt;joao@empresa.com&gt;</code></pre>
-        </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Revert</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
+Co-authored-by: João Souza &lt;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8de7e2ece2cde8e0fdffe8feeca3eee2e0">[email&#160;protected]</a>&gt;</code></pre>
           </div>
-          <pre><code>revert: feat(auth): adiciona suporte a login com Google
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Revert</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>revert: feat(auth): adiciona suporte a login com Google
 
 Refs: abc1234
 
 Revertido por instabilidade no fluxo de callback em
 ambientes com proxy reverso. Será retomado na próxima sprint.</code></pre>
-        </div>
-
-        <aside class="warning">
-          <h4>Exemplos de commits ruins</h4>
-          <p>Evite mensagens sem contexto (<code>fix: bug</code>), muito genéricas (<code>feat: melhorias</code>), no modo passado (<code>fixed: corrigido erro</code>), com letras maiúsculas ou ponto final (<code>Fix: Corrigiu o erro.</code>), ou que agrupam múltiplas responsabilidades em um único commit.</p>
-        </aside>
-
-        <h3>Boas Práticas Avançadas</h3>
-
-        <ol>
-          <li><strong>Um commit = uma responsabilidade:</strong> cada commit deve representar uma única mudança lógica. Se você se pegar escrevendo "e" na descrição, provavelmente são dois commits.</li>
-
-          <li><strong>Commits atômicos:</strong> o repositório deve compilar e os testes devem passar em qualquer commit do histórico. Isso é essencial para <code>git bisect</code> funcionar bem.</li>
-
-          <li><strong>Prefira <code>git commit --amend</code> a commits de correção:</strong> se você ainda não fez push, emende o commit ao invés de criar um <code>fix: corrige typo do commit anterior</code>.</li>
-        </ol>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git commit --amend</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>git add .
+
+          <aside class="warning">
+            <h4>Exemplos de commits ruins</h4>
+            <p>
+              Evite mensagens sem contexto (<code>fix: bug</code>), muito
+              genéricas (<code>feat: melhorias</code>), no modo passado (<code
+                >fixed: corrigido erro</code
+              >), com letras maiúsculas ou ponto final (<code
+                >Fix: Corrigiu o erro.</code
+              >), ou que agrupam múltiplas responsabilidades em um único commit.
+            </p>
+          </aside>
+
+          <h3>Boas Práticas Avançadas</h3>
+
+          <ol>
+            <li>
+              <strong>Um commit = uma responsabilidade:</strong> cada commit
+              deve representar uma única mudança lógica. Se você se pegar
+              escrevendo "e" na descrição, provavelmente são dois commits.
+            </li>
+
+            <li>
+              <strong>Commits atômicos:</strong> o repositório deve compilar e
+              os testes devem passar em qualquer commit do histórico. Isso é
+              essencial para <code>git bisect</code> funcionar bem.
+            </li>
+
+            <li>
+              <strong
+                >Prefira <code>git commit --amend</code> a commits de
+                correção:</strong
+              >
+              se você ainda não fez push, emende o commit ao invés de criar um
+              <code>fix: corrige typo do commit anterior</code>.
+            </li>
+          </ol>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>git commit --amend</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>git add .
 git commit --amend --no-edit   # mantém a mensagem atual
 git commit --amend             # abre editor para alterar mensagem</code></pre>
-        </div>
-
-        <p>Use <code>git rebase -i</code> para limpar o histórico antes do merge — agrupe, reordene ou edite commits de uma branch antes de abri-la para revisão.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>git rebase -i</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>git rebase -i HEAD~5   # abre editor para os últimos 5 commits</code></pre>
-        </div>
 
-        <table>
-          <caption>Ações disponíveis no editor interativo</caption>
-          <thead>
-            <tr>
-              <th scope="col">Ação</th>
-              <th scope="col">Efeito</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>pick</code></td>
-              <td>Mantém o commit</td>
-            </tr>
-            <tr>
-              <td><code>reword</code></td>
-              <td>Mantém, mas edita a mensagem</td>
-            </tr>
-            <tr>
-              <td><code>edit</code></td>
-              <td>Para e permite emendas</td>
-            </tr>
-            <tr>
-              <td><code>squash</code></td>
-              <td>Une ao commit anterior (mantém mensagens)</td>
-            </tr>
-            <tr>
-              <td><code>fixup</code></td>
-              <td>Une ao commit anterior (descarta mensagem)</td>
-            </tr>
-            <tr>
-              <td><code>drop</code></td>
-              <td>Remove o commit</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+          <p>
+            Use <code>git rebase -i</code> para limpar o histórico antes do
+            merge — agrupe, reordene ou edite commits de uma branch antes de
+            abri-la para revisão.
+          </p>
 
-      <p>Caso queira continuar estudando e aprender mais sobre outros conteúdos, <a href="/index.html">segue o link</a>. Bons estudos!</p>
+          <div class="code-container">
+            <div class="code-header">
+              <span>git rebase -i</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>git rebase -i HEAD~5   # abre editor para os últimos 5 commits</code></pre>
+          </div>
 
-      <blockquote class="quote">
-        <p>"<em>A beleza que vive no ato de compartilhar algo com o outro.</em>" — <cite>Monja Coen</cite></p>
-      </blockquote>
+          <div class="table-wrapper">
+            <table>
+              <caption>
+                Ações disponíveis no editor interativo
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Ação</th>
+                  <th scope="col">Efeito</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>pick</code></td>
+                  <td>Mantém o commit</td>
+                </tr>
+                <tr>
+                  <td><code>reword</code></td>
+                  <td>Mantém, mas edita a mensagem</td>
+                </tr>
+                <tr>
+                  <td><code>edit</code></td>
+                  <td>Para e permite emendas</td>
+                </tr>
+                <tr>
+                  <td><code>squash</code></td>
+                  <td>Junta com o commit anterior</td>
+                </tr>
+                <tr>
+                  <td><code>fixup</code></td>
+                  <td>Como squash, mas descarta a mensagem</td>
+                </tr>
+                <tr>
+                  <td><code>drop</code></td>
+                  <td>Remove o commit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </article>
+    </main>
 
-    </article>
-  </main>
+    <footer>
+      <p>Nilton F. O. Júnior</p>
+    </footer>
 
-  <footer>
-    <p>Nilton F. O. Júnior</p>
-  </footer>
-
-  <script src="/src/js/script.js" defer></script>
-  <script src="/src/js/template.js" defer></script>
-
-</body>
-
+    <script src="/src/js/template.js" defer></script>
+  </body>
 </html>

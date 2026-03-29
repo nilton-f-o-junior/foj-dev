@@ -1,107 +1,149 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guia completo sobre coleções em Rust: Vec, HashMap, HashSet, BinaryHeap, BTreeMap, BTreeSet e LinkedList explicados de forma acessível"
+    />
+    <meta
+      name="keywords"
+      content="Rust, programação, coleções, Vec, HashMap, HashSet, BinaryHeap, BTreeMap, LinkedList"
+    />
+    <meta name="author" content="Nilton F. O. Júnior" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Guia completo sobre coleções em Rust: Vec, HashMap, HashSet, BinaryHeap, BTreeMap, BTreeSet e LinkedList explicados de forma acessível">
-  <meta name="keywords" content="Rust, programação, coleções, Vec, HashMap, HashSet, BinaryHeap, BTreeMap, LinkedList">
-  <meta name="author" content="Nilton F. O. Júnior">
+    <title>Nilton F. O. Júnior | Rust - Coleções</title>
 
-  <title>Nilton F. O. Júnior | Rust - Coleções</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/template.css" />
+  </head>
 
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="/src/css/main.css">
-  <link rel="stylesheet" href="/src/css/template.css">
-</head>
+  <body>
+    <header>
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="/index.html">Início</a></li>
+        </ol>
+      </nav>
 
-<body>
-  <header>
+      <time class="article-date" datetime="2026-03-31">31 Março | 2026</time>
+      <h1>Coleções</h1>
+      <p class="article-summary">
+        Uma das questões mais importantes da programação é a organização de
+        informações. Quanto maior a quantidade de dados, mais desafiadora essa
+        tarefa se torna.
+      </p>
+    </header>
 
-    <nav aria-label="Breadcrumb">
-      <ol class="breadcrumb">
-        <li><a href="/index.html">Início</a></li>
-      </ol>
-    </nav>
+    <main>
+      <article class="article-content">
+        <section>
+          <h2>Introdução</h2>
+          <p>
+            Uma coleção é uma estrutura de dados que armazena múltiplos valores
+            na Heap, permitindo que a quantidade de itens mude durante a
+            execução do programa.
+          </p>
 
-    <time class="article-date" datetime="2026-03-31">31 Março | 2026</time>
-    <h1>Coleções</h1>
-    <p class="article-summary">Uma das questões mais importantes da programação é a organização de informações. Quanto
-      maior a quantidade de dados, mais desafiadora essa tarefa se torna.</p>
+          <p><strong>Os principais tipos disponíveis em Rust são:</strong></p>
 
-  </header>
+          <ul>
+            <li><strong>Vec&lt;T&gt;:</strong> Array dinâmico;</li>
+            <li><strong>Stack (via Vec):</strong> Pilha LIFO;</li>
+            <li><strong>VecDeque&lt;T&gt;:</strong> Fila FIFO / Deque;</li>
+            <li><strong>HashMap&lt;K,V&gt;:</strong> Chave-valor (Hash);</li>
+            <li><strong>HashSet&lt;T&gt;:</strong> Conjunto (Hash);</li>
+            <li><strong>BinaryHeap&lt;T&gt;:</strong> Fila de prioridade;</li>
+            <li>
+              <strong>BTreeMap&lt;K,V&gt;:</strong> Chave-valor (ordenado);
+            </li>
+            <li><strong>BTreeSet&lt;T&gt;:</strong> Conjunto (ordenado);</li>
+            <li><strong>LinkedList&lt;T&gt;:</strong> Lista encadeada.</li>
+          </ul>
+        </section>
 
-  <main>
+        <section>
+          <h2>Básico</h2>
 
-    <article class="article-content">
+          <p>
+            Antes de começar, é importante definir alguns conceitos comuns que
+            vão aparecer ao longo do texto:
+          </p>
 
-      <section>
-        <h2>Introdução</h2>
-        <p>Uma coleção é uma estrutura de dados que armazena múltiplos valores na Heap, permitindo que a quantidade de
-          itens mude durante a execução do programa.</p>
+          <dl>
+            <dt><strong>&lt;T&gt; (Type):</strong></dt>
+            <dd>
+              Ao criar um vetor em Rust, podemos omitir o tipo quando o
+              compilador consegue inferir pelo contexto, porém o recomendável é
+              colocá-lo explicitamente.
+            </dd>
 
-        <p><strong>Os principais tipos disponíveis em Rust são:</strong></p>
-        
-        <ul>
-          <li><strong>Vec&lt;T&gt;:</strong> Array dinâmico;</li>
-          <li><strong>Stack (via Vec):</strong> Pilha LIFO;</li>
-          <li><strong>VecDeque&lt;T&gt;:</strong> Fila FIFO / Deque;</li>
-          <li><strong>HashMap&lt;K,V&gt;:</strong> Chave-valor (Hash);</li>
-          <li><strong>HashSet&lt;T&gt;:</strong> Conjunto (Hash);</li>
-          <li><strong>BinaryHeap&lt;T&gt;:</strong> Fila de prioridade;</li>
-          <li><strong>BTreeMap&lt;K,V&gt;:</strong> Chave-valor (ordenado);</li>
-          <li><strong>BTreeSet&lt;T&gt;:</strong> Conjunto (ordenado);</li>
-          <li><strong>LinkedList&lt;T&gt;:</strong> Lista encadeada.</li>
-        </ul>
-      </section>
+            <dt><strong>&lt;K,V&gt; (Key, Value):</strong></dt>
+            <dd>
+              O conceito de chave-valor é bem simples: imagine que ao chegar no
+              trabalho você encontra diversos armários e cada um deles possui
+              uma chave única, o valor é o que você armazena dentro do armário.
+              Em Rust, todas as chaves devem ser do mesmo tipo e todos os
+              valores devem ser do mesmo tipo.
+            </dd>
 
-      <section>
-        <h2>Básico</h2>
+            <dt><strong>O(1):</strong></dt>
+            <dd>
+              O tempo é constante independente da quantidade de dados. Imagine o
+              armário com etiquetas: para pegar algo, você vai direto na
+              etiqueta certa, não importa se tem 10 ou 10 milhões de armários.
+            </dd>
 
-        <p>Antes de começar, é importante definir alguns conceitos comuns que vão aparecer ao longo do texto:</p>
+            <dt><strong>O(n):</strong></dt>
+            <dd>
+              O tempo é linear, cresce proporcionalmente à quantidade de dados.
+              Sem etiquetas, você precisa abrir os armários um por um até
+              encontrar o que quer. Se tiver 10, abre até 10. Se tiver 1000,
+              abre até 1000.
+            </dd>
 
-        <dl>
-          <dt><strong>&lt;T&gt; (Type):</strong></dt>
-          <dd>Ao criar um vetor em Rust, podemos omitir o tipo quando o compilador consegue inferir pelo contexto, porém
-            o recomendável é colocá-lo explicitamente.</dd>
+            <dt><strong>LIFO (Last in, first out):</strong></dt>
+            <dd>
+              O último a entrar é o primeiro a sair. Imagine uma pilha de
+              pratos: à medida que vão sujando e sendo colocados para lavar, o
+              último prato a entrar será o primeiro a ser lavado.
+            </dd>
 
-          <dt><strong>&lt;K,V&gt; (Key, Value):</strong></dt>
-          <dd>O conceito de chave-valor é bem simples: imagine que ao chegar no trabalho você encontra diversos armários
-            e cada um deles possui uma chave única, o valor é o que você armazena dentro do armário. Em Rust, todas as
-            chaves devem ser do mesmo tipo e todos os valores devem ser do mesmo tipo.</dd>
+            <dt><strong>FIFO (First in, first out):</strong></dt>
+            <dd>
+              O primeiro a entrar é o primeiro a sair. Pense em uma fila de
+              supermercado: a primeira pessoa a chegar no caixa é a primeira a
+              ser atendida.
+            </dd>
+          </dl>
+        </section>
 
-          <dt><strong>O(1):</strong></dt>
-          <dd>O tempo é constante independente da quantidade de dados. Imagine o armário com etiquetas: para pegar algo,
-            você vai direto na etiqueta certa, não importa se tem 10 ou 10 milhões de armários.</dd>
+        <section>
+          <h2>Vec&lt;T&gt;</h2>
 
-          <dt><strong>O(n):</strong></dt>
-          <dd>O tempo é linear, cresce proporcionalmente à quantidade de dados. Sem etiquetas, você precisa abrir os
-            armários um por um até encontrar o que quer. Se tiver 10, abre até 10. Se tiver 1000, abre até 1000.</dd>
+          <p>
+            Pode aumentar ou diminuir de tamanho conforme a entrada e saída de
+            dados. Os dados podem ser inseridos ou removidos de qualquer posição
+            do vetor.
+          </p>
 
-          <dt><strong>LIFO (Last in, first out):</strong></dt>
-          <dd>O último a entrar é o primeiro a sair. Imagine uma pilha de pratos: à medida que vão sujando e sendo
-            colocados para lavar, o último prato a entrar será o primeiro a ser lavado.</dd>
-
-          <dt><strong>FIFO (First in, first out):</strong></dt>
-          <dd>O primeiro a entrar é o primeiro a sair. Pense em uma fila de supermercado: a primeira pessoa a chegar no
-            caixa é a primeira a ser atendida.</dd>
-        </dl>
-      </section>
-
-      <section>
-        <h2>Vec&lt;T&gt;</h2>
-
-        <p>Pode aumentar ou diminuir de tamanho conforme a entrada e saída de dados. Os dados podem ser inseridos ou
-          removidos de qualquer posição do vetor.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
-          </div>
-          <pre><code>fn main () {
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>fn main () {
     let mut vetor_str: Vec&lt;&str&gt; = vec!["a", "b", "c"];
     println!("Vetor = {:#?}", vetor_str);
 
@@ -113,22 +155,31 @@
     vetor_str.remove(1);
     println!("Vetor = {:#?}", vetor_str);
 }</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>Stack</h2>
-
-        <p>Não temos a opção "Stack (Pilha)" separada em Rust, pois o próprio <strong>Vec</strong> já possui esse
-          comportamento. Vimos no exemplo anterior a adição de dados em qualquer posição do vetor, mas ele também pode
-          se comportar como uma pilha.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>fn main () {
+        </section>
+
+        <section>
+          <h2>Stack</h2>
+
+          <p>
+            Não temos a opção "Stack (Pilha)" separada em Rust, pois o próprio
+            <strong>Vec</strong> já possui esse comportamento. Vimos no exemplo
+            anterior a adição de dados em qualquer posição do vetor, mas ele
+            também pode se comportar como uma pilha.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>fn main () {
     let mut stack_str: Vec&lt;&str&gt; = vec!["a", "b", "c"];
     println!("Stack = {:#?}", stack_str);
 
@@ -143,22 +194,32 @@
     // last() - último item
     println!("Stack = {:#?}", stack_str.last());
 }</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>VecDeque&lt;T&gt;</h2>
-
-        <p>É um vetor excelente quando você precisa manipular elementos nos dois extremos da coleção com frequência.
-          Funciona como uma fila dupla (<em>double-ended queue</em>), o que significa que você pode adicionar e remover
-          elementos tanto no início quanto no final de forma eficiente.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>use std::collections::VecDeque;
+        </section>
+
+        <section>
+          <h2>VecDeque&lt;T&gt;</h2>
+
+          <p>
+            É um vetor excelente quando você precisa manipular elementos nos
+            dois extremos da coleção com frequência. Funciona como uma fila
+            dupla (<em>double-ended queue</em>), o que significa que você pode
+            adicionar e remover elementos tanto no início quanto no final de
+            forma eficiente.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>use std::collections::VecDeque;
 
 fn main() {
     let mut vecdeque: VecDeque&lt;i32&gt; = VecDeque::new();
@@ -183,27 +244,39 @@ fn main() {
 
     println!("Restou apenas: {:?}", vecdeque); // [10]
 }</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>HashMap&lt;K,V&gt;</h2>
-
-        <p>O HashMap é a forma mais rápida de acessar um valor a partir de uma chave. Lembra do exemplo do
-          armário? A partir do momento que você guarda algo e atribui a esse item uma chave, você pode acessar o dado
-          rapidamente, independente do tamanho do mapa.</p>
-
-        <aside class="note">
-          <p><strong>Detalhe importante:</strong> não podemos ter duas chaves iguais. Se você tentar adicionar um
-            novo valor a uma chave que já existe, o valor antigo será sobrescrito.</p>
-        </aside>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>use std::collections::HashMap;
+        </section>
+
+        <section>
+          <h2>HashMap&lt;K,V&gt;</h2>
+
+          <p>
+            O HashMap é a forma mais rápida de acessar um valor a partir de uma
+            chave. Lembra do exemplo do armário? A partir do momento que você
+            guarda algo e atribui a esse item uma chave, você pode acessar o
+            dado rapidamente, independente do tamanho do mapa.
+          </p>
+
+          <aside class="note">
+            <p>
+              <strong>Detalhe importante:</strong> não podemos ter duas chaves
+              iguais. Se você tentar adicionar um novo valor a uma chave que já
+              existe, o valor antigo será sobrescrito.
+            </p>
+          </aside>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>use std::collections::HashMap;
 
 fn main() {
     let mut config: HashMap&lt;&str, &str&gt; = HashMap::new();
@@ -224,22 +297,31 @@ fn main() {
     println!("Tema: {:?}", config.get("tema"));
     println!("Idioma: {:?}", config.get("idioma"));
 }</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>HashSet&lt;T&gt;</h2>
-
-        <p>Quando você entende bem o conceito de chave e valor, fica fácil entender o HashSet, aqui só
-          existe o valor e ele não pode se repetir. Imagine um sistema com uma lista de CPFs de diversos usuários o
-          CPF de 2 usuários não pode ser igual.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>use std::collections::HashSet;
+        </section>
+
+        <section>
+          <h2>HashSet&lt;T&gt;</h2>
+
+          <p>
+            Quando você entende bem o conceito de chave e valor, fica fácil
+            entender o HashSet, aqui só existe o valor e ele não pode se
+            repetir. Imagine um sistema com uma lista de CPFs de diversos
+            usuários o CPF de 2 usuários não pode ser igual.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>use std::collections::HashSet;
 
 fn main() {
     // criando um HashSet de Strings
@@ -260,21 +342,31 @@ fn main() {
     // verificando se contém na lista
     println!("Existe 'Carla' na lista? {}", nomes.contains("Carla"));
 }</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>BinaryHeap&lt;T&gt;</h2>
-
-        <p>Se você está criando uma lista em que a prioridade é algo importante, o <code>BinaryHeap</code> acaba sendo a
-          melhor opção. Ele é extremamente eficiente quando precisamos acessar o maior ou o menor valor.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>use std::collections::BinaryHeap;
+        </section>
+
+        <section>
+          <h2>BinaryHeap&lt;T&gt;</h2>
+
+          <p>
+            Se você está criando uma lista em que a prioridade é algo
+            importante, o <code>BinaryHeap</code> acaba sendo a melhor opção.
+            Ele é extremamente eficiente quando precisamos acessar o maior ou o
+            menor valor.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>use std::collections::BinaryHeap;
 
 fn main() {
     let mut fila_hospital: BinaryHeap&lt;u8&gt; = BinaryHeap::new();
@@ -293,22 +385,31 @@ fn main() {
         println!("Atendendo paciente de {} anos.", paciente);
     }
 }</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>BTreeMap&lt;K,V&gt;</h2>
-
-        <p>O BTreeMap é como juntar o "HashMap" com o "BinaryHeap", com uma pequena
-          diferença: os valores ao entrar se organizam completamente, enquanto no "BinaryHeap" eles apenas se
-          reorganizam para o maior ou menor ficar facilmente acessível.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>use std::collections::BTreeMap;
+        </section>
+
+        <section>
+          <h2>BTreeMap&lt;K,V&gt;</h2>
+
+          <p>
+            O BTreeMap é como juntar o "HashMap" com o "BinaryHeap", com uma
+            pequena diferença: os valores ao entrar se organizam completamente,
+            enquanto no "BinaryHeap" eles apenas se reorganizam para o maior ou
+            menor ficar facilmente acessível.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>use std::collections::BTreeMap;
 
 fn main() {
     // criando mapa
@@ -327,24 +428,34 @@ fn main() {
         println!("ID {}: {}", id, tarefa);
     }
 }</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>BTreeSet&lt;T&gt;</h2>
-
-        <p>O BTreeSet funciona seguindo a mesma lógica do "BTreeMap", porém sem valores
-          associados, apenas chaves. Pense em uma lista de convidados: por mais que tente adicionar o mesmo nome várias
-          vezes, ele guarda apenas um. Não importa a ordem em que foi adicionada, a lista se organiza sozinha. A busca
-          por um nome ou grupo de nomes também é muito eficiente, pois os dados ficam organizados em ordem na árvore,
-          evitando percorrer a lista inteira.</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>use std::collections::BTreeSet;
+        </section>
+
+        <section>
+          <h2>BTreeSet&lt;T&gt;</h2>
+
+          <p>
+            O BTreeSet funciona seguindo a mesma lógica do "BTreeMap", porém sem
+            valores associados, apenas chaves. Pense em uma lista de convidados:
+            por mais que tente adicionar o mesmo nome várias vezes, ele guarda
+            apenas um. Não importa a ordem em que foi adicionada, a lista se
+            organiza sozinha. A busca por um nome ou grupo de nomes também é
+            muito eficiente, pois os dados ficam organizados em ordem na árvore,
+            evitando percorrer a lista inteira.
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>use std::collections::BTreeSet;
 
 fn main() {
     // lista de convidados
@@ -363,23 +474,32 @@ fn main() {
     // duplicatas são ignoradas automaticamente
     println!("Lista oficial de convidados: {:?}", convidados);
 }</code></pre>
-        </div>
-      </section>
-
-      <section>
-        <h2>LinkedList&lt;T&gt;</h2>
-
-        <p>Quando você tem uma coleção em que precisa inserir ou remover elementos no meio com frequência, a
-          "LinkedList" pode ser uma boa opção. Você cria um <em>link</em> entre os elementos, que pode ser
-          simplesmente encadeada (cada elemento conhece apenas o próximo) ou duplamente encadeada (cada elemento conhece
-          o anterior e o próximo).</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>Rust</span>
-            <button class="copy-btn" onclick="copyCode(this)" aria-label="Copiar código">Copiar</button>
           </div>
-          <pre><code>use std::collections::LinkedList;
+        </section>
+
+        <section>
+          <h2>LinkedList&lt;T&gt;</h2>
+
+          <p>
+            Quando você tem uma coleção em que precisa inserir ou remover
+            elementos no meio com frequência, a "LinkedList" pode ser uma boa
+            opção. Você cria um <em>link</em> entre os elementos, que pode ser
+            simplesmente encadeada (cada elemento conhece apenas o próximo) ou
+            duplamente encadeada (cada elemento conhece o anterior e o próximo).
+          </p>
+
+          <div class="code-container">
+            <div class="code-header">
+              <span>Rust</span>
+              <button
+                class="copy-btn"
+                onclick="copyCode(this)"
+                aria-label="Copiar código"
+              >
+                Copiar
+              </button>
+            </div>
+            <pre><code>use std::collections::LinkedList;
 
 fn main() {
     // lista de pessoas
@@ -396,108 +516,120 @@ fn main() {
     // Ana → Carlos → João → Pedro
     println!("{:?}", lista);
 }</code></pre>
-        </div>
+          </div>
 
-        <aside class="warning">
-          <h4>Nota da equipe Rust</h4>
-          <p>A própria equipe do Rust desencoraja o uso de "LinkedList" na maioria dos casos. Na documentação
-            eles chegam a dizer que é quase sempre melhor usar um "Vec" ou "VecDeque". Isso porque
-            listas encadeadas têm péssima performance de cache em hardware moderno, já que os nós ficam espalhados na
-            memória heap ao invés de contíguos.</p>
-        </aside>
-      </section>
+          <aside class="warning">
+            <h4>Nota da equipe Rust</h4>
+            <p>
+              A própria equipe do Rust desencoraja o uso de "LinkedList" na
+              maioria dos casos. Na documentação eles chegam a dizer que é quase
+              sempre melhor usar um "Vec" ou "VecDeque". Isso porque listas
+              encadeadas têm péssima performance de cache em hardware moderno,
+              já que os nós ficam espalhados na memória heap ao invés de
+              contíguos.
+            </p>
+          </aside>
+        </section>
 
-      <section>
-        <h2>Tabela Comparativa</h2>
+        <section>
+          <h2>Tabela Comparativa</h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Estrutura</th>
-              <th scope="col">Inserção/Remoção</th>
-              <th scope="col">Acesso</th>
-              <th scope="col">Observação</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Vec&lt;T&gt;</td>
-              <td>O(1) no final</td>
-              <td>O(1) por índice</td>
-              <td>O(n) ao redimensionar</td>
-            </tr>
-            <tr>
-              <td>Vec&lt;T&gt; como Stack</td>
-              <td>O(1) no final</td>
-              <td>O(1) no topo</td>
-              <td>O(n) ao redimensionar</td>
-            </tr>
-            <tr>
-              <td>VecDeque&lt;T&gt;</td>
-              <td>O(1) nos dois extremos</td>
-              <td>O(1) por índice</td>
-              <td>O(n) ao redimensionar</td>
-            </tr>
-            <tr>
-              <td>HashMap&lt;K, V&gt;</td>
-              <td>O(1) médio</td>
-              <td>O(1) médio por chave</td>
-              <td>Sem ordem garantida</td>
-            </tr>
-            <tr>
-              <td>HashSet&lt;T&gt;</td>
-              <td>O(1) médio</td>
-              <td>O(1) médio</td>
-              <td>Sem ordem, sem duplicatas</td>
-            </tr>
-            <tr>
-              <td>BinaryHeap&lt;T&gt;</td>
-              <td>O(log n)</td>
-              <td>O(1) no máximo</td>
-              <td>Fila de prioridade</td>
-            </tr>
-            <tr>
-              <td>BTreeMap&lt;K, V&gt;</td>
-              <td>O(log n)</td>
-              <td>O(log n) por chave</td>
-              <td>Ordenado por chave</td>
-            </tr>
-            <tr>
-              <td>BTreeSet&lt;T&gt;</td>
-              <td>O(log n)</td>
-              <td>O(log n)</td>
-              <td>Ordenado, sem duplicatas</td>
-            </tr>
-            <tr>
-              <td>LinkedList&lt;T&gt;</td>
-              <td>O(1) nos extremos</td>
-              <td>O(n) por posição</td>
-              <td>Pouco usada em Rust</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Estrutura</th>
+                  <th scope="col">Inserção/Remoção</th>
+                  <th scope="col">Acesso</th>
+                  <th scope="col">Observação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vec&lt;T&gt;</td>
+                  <td>O(1) no final</td>
+                  <td>O(1) por índice</td>
+                  <td>O(n) ao redimensionar</td>
+                </tr>
+                <tr>
+                  <td>Vec&lt;T&gt; como Stack</td>
+                  <td>O(1) no final</td>
+                  <td>O(1) no topo</td>
+                  <td>O(n) ao redimensionar</td>
+                </tr>
+                <tr>
+                  <td>VecDeque&lt;T&gt;</td>
+                  <td>O(1) nos dois extremos</td>
+                  <td>O(1) por índice</td>
+                  <td>O(n) ao redimensionar</td>
+                </tr>
+                <tr>
+                  <td>HashMap&lt;K, V&gt;</td>
+                  <td>O(1) médio</td>
+                  <td>O(1) médio por chave</td>
+                  <td>Sem ordem garantida</td>
+                </tr>
+                <tr>
+                  <td>HashSet&lt;T&gt;</td>
+                  <td>O(1) médio</td>
+                  <td>O(1) médio</td>
+                  <td>Sem ordem, sem duplicatas</td>
+                </tr>
+                <tr>
+                  <td>BinaryHeap&lt;T&gt;</td>
+                  <td>O(log n)</td>
+                  <td>O(1) no máximo</td>
+                  <td>Fila de prioridade</td>
+                </tr>
+                <tr>
+                  <td>BTreeMap&lt;K, V&gt;</td>
+                  <td>O(log n)</td>
+                  <td>O(log n) por chave</td>
+                  <td>Ordenado por chave</td>
+                </tr>
+                <tr>
+                  <td>BTreeSet&lt;T&gt;</td>
+                  <td>O(log n)</td>
+                  <td>O(log n)</td>
+                  <td>Ordenado, sem duplicatas</td>
+                </tr>
+                <tr>
+                  <td>LinkedList&lt;T&gt;</td>
+                  <td>O(1) nos extremos</td>
+                  <td>O(n) por posição</td>
+                  <td>Pouco usada em Rust</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-      <p>Este material foi escrito para dar um panorama geral de como funcionam as coleções em Rust. Ainda será
-        publicado um conteúdo explicando cada item detalhadamente. No livro você vai encontrar diversos exemplos e
-        formas de uso para entender como aplicar isso no seu programa em desenvolvimento.</p>
+        <p>
+          Este material foi escrito para dar um panorama geral de como funcionam
+          as coleções em Rust. Ainda será publicado um conteúdo explicando cada
+          item detalhadamente. No livro você vai encontrar diversos exemplos e
+          formas de uso para entender como aplicar isso no seu programa em
+          desenvolvimento.
+        </p>
 
-      <p>Caso queira continuar estudando e aprender mais sobre outros conteúdos, <a href="/index.html">segue o link</a>.
-        Bons estudos!</p>
+        <p>
+          Caso queira continuar estudando e aprender mais sobre outros
+          conteúdos, <a href="/index.html">segue o link</a>. Bons estudos!
+        </p>
 
-      <blockquote class="quote">
-        <p>"<em>A beleza que vive no ato de compartilhar algo com o outro.</em>" — <cite>Monja Coen</cite></p>
-      </blockquote>
+        <blockquote class="quote">
+          <p>
+            "<em>A beleza que vive no ato de compartilhar algo com o outro.</em
+            >" — <cite>Monja Coen</cite>
+          </p>
+        </blockquote>
+      </article>
+    </main>
 
-    </article>
-  </main>
+    <footer>
+      <p>Nilton F. O. Júnior</p>
+    </footer>
 
-  <footer>
-    <p>Nilton F. O. Júnior</p>
-  </footer>
-
-  <script src="/src/js/template.js" defer></script>
-
-</body>
-
+    <script src="/src/js/template.js" defer></script>
+  </body>
 </html>

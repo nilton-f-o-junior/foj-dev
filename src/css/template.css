@@ -96,14 +96,16 @@ main {
   max-width: 1200px;
   width: 100%;
   display: flex;
+  justify-content: center;
   margin: 0 auto;
   padding: 32px 0;
 }
 
 .article-content {
-  flex: 1;
   min-width: 0;
+  width: 100%;
   max-width: 800px;
+  margin: 0 auto;
   color: var(--text-primary-template);
 }
 

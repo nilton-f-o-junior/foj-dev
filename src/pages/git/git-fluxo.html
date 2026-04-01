@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Guia completo sobre o fluxo diário com Git: branches, commits, rebase e boas práticas"
+        />
+        <meta
+            name="keywords"
+            content="Git, programação, fluxo de trabalho, branches, commits, conventional commits"
+        />
+        <meta name="author" content="Nilton F. O. Júnior" />
+
+        <title>Nilton F. O. Júnior | Git — Fluxo Diário</title>
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="../../css/main.css" />
+        <link rel="stylesheet" href="../../css/template.css" />
+    </head>
+
+    <body>
+        <header>
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="/index.html">Início</a></li>
+                </ol>
+            </nav>
+
+            <time class="article-date" datetime="2026-03-31"
+                >31 Março | 2026</time
+            >
+            <h1>Git — Fluxo Diário</h1>
+            <p class="article-summary">
+                Um guia prático com os comandos essenciais para o dia a dia com
+                Git: desde clonar um projeto até abrir um Pull Request com boas
+                mensagens de commit
+            </p>
+        </header>
+
+        <main>
+            <article class="article-content">
+                <!-- 1. Começando o dia -->
+                <section>
+                    <h2>1. Começando o dia</h2>
+                    <p>
+                        Antes de começar a trabalhar, garanta que seu
+                        repositório local está sincronizado com o que há no
+                        remoto. Se for a primeira vez no projeto, clone-o; caso
+                        contrário, atualize a branch principal.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># clonar o projeto (primeira vez)
+git clone https://github.com/usuario/projeto.git
+
+# atualizar a branch principal com o que tem no remoto
+git pull origin main</code></pre>
+                    </div>
+                </section>
+
+                <!-- 2. Criando sua branch de trabalho -->
+                <section>
+                    <h2>2. Criando sua branch de trabalho</h2>
+                    <p>
+                        Nunca trabalhe diretamente na <code>main</code>. Crie
+                        uma branch dedicada para cada tarefa ou funcionalidade.
+                        Isso mantém o histórico limpo e facilita revisões de
+                        código.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># criar e já entrar na branch
+git switch -c feature/minha-tarefa
+
+# ver em qual branch você está
+git branch</code></pre>
+                    </div>
+                </section>
+
+                <!-- 3. Durante o desenvolvimento -->
+                <section>
+                    <h2>3. Durante o desenvolvimento</h2>
+                    <p>
+                        Use <code>git status</code> e <code>git diff</code> com
+                        frequência para acompanhar o que está sendo alterado
+                        antes de registrar qualquer commit.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># ver o que foi modificado
+git status
+
+# ver as mudanças linha a linha antes de adicionar
+git diff
+
+# adicionar tudo
+git add .
+
+# adicionar um arquivo específico
+git add src/componente.js
+
+# salvar com mensagem
+git commit -m "feat: adiciona botão de login"</code></pre>
+                    </div>
+                </section>
+
+                <!-- 4. Mantendo a branch atualizada -->
+                <section>
+                    <h2>4. Mantendo sua branch atualizada com a main</h2>
+                    <p>
+                        Quando outras pessoas também contribuem para o projeto,
+                        a
+                        <code>main</code> avança enquanto você trabalha na sua
+                        branch. Use o <code>rebase</code> para trazer essas
+                        atualizações e evitar conflitos na hora do merge.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># trazer as atualizações da main para dentro da sua branch
+git switch main
+git pull origin main
+git switch feature/minha-tarefa
+git rebase main</code></pre>
+                    </div>
+
+                    <aside class="note">
+                        <p>
+                            <strong>💡 Observação:</strong> O
+                            <code>rebase</code> reescreve o histórico da sua
+                            branch aplicando seus commits em cima da
+                            <code>main</code> atualizada. Prefira-o ao
+                            <code>merge</code>
+                            para manter um histórico linear e mais legível.
+                        </p>
+                    </aside>
+                </section>
+
+                <!-- 5. Enviando o trabalho -->
+                <section>
+                    <h2>5. Enviando o trabalho</h2>
+                    <p>
+                        Após concluir o desenvolvimento e commitar tudo, suba
+                        sua branch para o remoto para abrir um Pull Request.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># subir sua branch para o remoto (primeira vez)
+git push -u origin feature/minha-tarefa
+
+# subir nas próximas vezes
+git push</code></pre>
+                    </div>
+                </section>
+
+                <!-- 6. Inspecionando o histórico -->
+                <section>
+                    <h2>6. Inspecionando o histórico</h2>
+                    <p>
+                        Às vezes precisamos entender o que aconteceu antes: quem
+                        alterou determinada linha, o que um commit específico
+                        mudou, ou apenas visualizar o histórico recente de forma
+                        compacta.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># ver commits recentes de forma resumida
+git log --oneline
+
+# ver quem alterou cada linha de um arquivo
+git blame src/componente.js
+
+# ver detalhes de um commit específico
+git show a3f5c1b</code></pre>
+                    </div>
+                </section>
+
+                <!-- 7. Corrigindo antes do commit -->
+                <section>
+                    <h2>7. Corrigindo antes do commit</h2>
+                    <p>
+                        Adicionou o arquivo errado ou escreveu a mensagem com
+                        typo? Sem problema — há formas simples de corrigir antes
+                        de registrar o commit definitivamente.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># desfazer o git add de um arquivo
+git restore --staged arquivo.js
+
+# descartar as mudanças locais de um arquivo
+git restore arquivo.js
+
+# corrigir a mensagem do último commit
+git commit --amend -m "feat: mensagem corrigida"</code></pre>
+                    </div>
+                </section>
+
+                <!-- 8. Corrigindo após o commit -->
+                <section>
+                    <h2>8. Corrigindo após o commit</h2>
+                    <p>
+                        Commitou cedo demais? Use <code>reset</code> para
+                        desfazer o commit mantendo as alterações nos arquivos,
+                        ou <code>stash</code> para guardar o trabalho em
+                        andamento temporariamente.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># desfazer o último commit (mantém as alterações nos arquivos)
+git reset HEAD~1
+
+# stash — guardar mudanças temporariamente sem commitar
+git stash            # guarda
+git stash pop        # recupera</code></pre>
+                    </div>
+
+                    <aside class="warning">
+                        <h4>⚠️ Cuidado com o reset em branches remotas</h4>
+                        <p>
+                            O <code>git reset</code> reescreve o histórico
+                            local. Se a branch já foi enviada para o remoto,
+                            você precisará de <code>git push --force</code>, o
+                            que pode sobrescrever o trabalho de outras pessoas.
+                            Use com cautela.
+                        </p>
+                    </aside>
+                </section>
+
+                <!-- 9. Finalizando a tarefa -->
+                <section>
+                    <h2>9. Finalizando a tarefa</h2>
+                    <p>
+                        Depois que o Pull Request for aprovado e mergeado na
+                        <code>main</code>, volte para a branch principal,
+                        atualize-a e remova a branch de trabalho que não é mais
+                        necessária.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span>Bash</span>
+                            <button
+                                class="copy-btn"
+                                onclick="copyCode(this)"
+                                aria-label="Copiar código"
+                            >
+                                Copiar
+                            </button>
+                        </div>
+                        <pre><code># após o PR ser aprovado e mergeado, limpar localmente
+git switch main
+git pull origin main
+git branch -d feature/minha-tarefa</code></pre>
+                    </div>
+                </section>
+
+                <!-- Referência rápida -->
+                <section>
+                    <h2>Referência rápida</h2>
+                    <p>
+                        Uma visão consolidada dos comandos mais usados no dia a
+                        dia para consulta rápida.
+                    </p>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <caption>
+                                Comandos Essenciais do Git
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Comando</th>
+                                    <th scope="col">O que faz</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>git status</code></td>
+                                    <td>Ver arquivos modificados</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git diff</code></td>
+                                    <td>Ver mudanças linha a linha</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git add .</code></td>
+                                    <td>Adicionar tudo para o commit</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git commit -m ""</code></td>
+                                    <td>Salvar com mensagem</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git push</code></td>
+                                    <td>Enviar para o remoto</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git pull</code></td>
+                                    <td>Baixar e aplicar atualizações</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git switch -c</code></td>
+                                    <td>Criar e entrar em uma branch</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git log --oneline</code></td>
+                                    <td>Ver histórico resumido</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git stash</code></td>
+                                    <td>Guardar mudanças sem commitar</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git rebase main</code></td>
+                                    <td>Atualizar branch com a main</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git reset HEAD~1</code></td>
+                                    <td>Desfazer último commit</td>
+                                </tr>
+                                <tr>
+                                    <td><code>git restore arquivo</code></td>
+                                    <td>Descartar mudanças locais</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Conventional Commits -->
+                <section>
+                    <h2>Prefixos de Commit — Conventional Commits</h2>
+                    <p>
+                        Adotar um padrão de mensagens de commit torna o
+                        histórico do projeto legível para todos do time e
+                        facilita a geração automática de changelogs. O padrão
+                        mais utilizado é o
+                        <strong>Conventional Commits</strong>.
+                    </p>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <caption>
+                                Prefixos do Conventional Commits
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Prefixo</th>
+                                    <th scope="col">Uso</th>
+                                    <th scope="col">Exemplo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>feat</code></td>
+                                    <td>Nova funcionalidade</td>
+                                    <td>
+                                        <code
+                                            >feat(auth): adiciona login com
+                                            Google</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>fix</code></td>
+                                    <td>Correção de bug</td>
+                                    <td>
+                                        <code
+                                            >fix(api): corrige timeout em
+                                            chamadas lentas</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>docs</code></td>
+                                    <td>Documentação</td>
+                                    <td>
+                                        <code
+                                            >docs(readme): atualiza instruções
+                                            de setup</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>style</code></td>
+                                    <td>
+                                        Formatação, lint (sem mudança de lógica)
+                                    </td>
+                                    <td>
+                                        <code
+                                            >style: aplica prettier nos
+                                            arquivos</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>refactor</code></td>
+                                    <td>
+                                        Melhoria de código sem alterar
+                                        comportamento
+                                    </td>
+                                    <td>
+                                        <code
+                                            >refactor(user): simplifica lógica
+                                            de validação</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>test</code></td>
+                                    <td>Adição ou correção de testes</td>
+                                    <td>
+                                        <code
+                                            >test(auth): adiciona testes de
+                                            login</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>chore</code></td>
+                                    <td>Build, dependências, configurações</td>
+                                    <td>
+                                        <code
+                                            >chore: atualiza versão do
+                                            eslint</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>perf</code></td>
+                                    <td>Melhoria de performance</td>
+                                    <td>
+                                        <code
+                                            >perf(query): otimiza busca no
+                                            banco</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>ci</code></td>
+                                    <td>Configuração de CI/CD</td>
+                                    <td>
+                                        <code
+                                            >ci: adiciona workflow de
+                                            deploy</code
+                                        >
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>revert</code></td>
+                                    <td>Reverter um commit anterior</td>
+                                    <td>
+                                        <code
+                                            >revert: desfaz feat(auth): login
+                                            com Google</code
+                                        >
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <p>
+                    Caso queira continuar estudando e aprender mais sobre outros
+                    conteúdos, <a href="/index.html">segue o link</a>. Bons
+                    estudos!
+                </p>
+
+                <blockquote class="quote">
+                    <p>
+                        "<em
+                            >Um bom histórico de commits é uma carta para o seu
+                            eu do futuro.</em
+                        >" — <cite>comunidade Git</cite>
+                    </p>
+                </blockquote>
+            </article>
+        </main>
+
+        <footer>
+            <p>Nilton F. O. Júnior</p>
+        </footer>
+
+        <script src="../../js/template.js" defer></script>
+    </body>
+</html>
